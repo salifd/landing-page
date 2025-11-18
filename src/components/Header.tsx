@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Header: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
             <div className="relative">
               <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent-dark rounded-lg flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-9 h-9 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
               <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent-coral rounded-full border-2 border-white"></div>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-primary">TravelPay</h1>
+              <h1 className="text-3xl font-bold text-primary">Quikku</h1>
               <p className="text-xs text-gray-500">Payment reimagined</p>
             </div>
           </div>

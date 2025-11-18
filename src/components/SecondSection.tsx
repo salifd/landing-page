@@ -50,88 +50,12 @@ const SecondSection: React.FC = () => {
           <div className="order-2 lg:order-1 animate-slide-right">
             <div className="relative">
               {/* Main Image Container */}
-              <div className="aspect-square bg-gradient-to-br from-primary via-accent-dark to-secondary rounded-3xl overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center p-8">
-                  {/* Placeholder SVG Illustration - Email/Notification theme */}
-                  <svg
-                    className="w-full h-full"
-                    viewBox="0 0 400 400"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Email envelope */}
-                    <rect
-                      x="80"
-                      y="120"
-                      width="240"
-                      height="160"
-                      rx="12"
-                      fill="white"
-                      opacity="0.9"
-                    />
-                    <path
-                      d="M80 140 L200 220 L320 140"
-                      stroke="#0A2472"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <line
-                      x1="80"
-                      y1="140"
-                      x2="80"
-                      y2="280"
-                      stroke="#0A2472"
-                      strokeWidth="3"
-                      opacity="0.3"
-                    />
-                    <line
-                      x1="320"
-                      y1="140"
-                      x2="320"
-                      y2="280"
-                      stroke="#0A2472"
-                      strokeWidth="3"
-                      opacity="0.3"
-                    />
-
-                    {/* Notification badge */}
-                    <circle cx="300" cy="130" r="20" fill="#FF6B6B" />
-                    <text
-                      x="300"
-                      y="137"
-                      textAnchor="middle"
-                      fill="white"
-                      fontSize="20"
-                      fontWeight="bold"
-                    >
-                      1
-                    </text>
-
-                    {/* Decorative dots */}
-                    <circle
-                      cx="120"
-                      cy="80"
-                      r="8"
-                      fill="#A6E1FA"
-                      opacity="0.6"
-                    />
-                    <circle
-                      cx="280"
-                      cy="320"
-                      r="12"
-                      fill="#A6E1FA"
-                      opacity="0.6"
-                    />
-                    <circle
-                      cx="340"
-                      cy="200"
-                      r="6"
-                      fill="#FF6B6B"
-                      opacity="0.6"
-                    />
-                  </svg>
-                </div>
+              <div className="aspect-square rounded-3xl overflow-hidden">
+                <img
+                  src="/assets/images/illustration_5.jpeg"
+                  alt="Join our community illustration"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Decorative Elements */}

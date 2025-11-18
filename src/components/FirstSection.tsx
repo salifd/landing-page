@@ -24,75 +24,12 @@ const FirstSection: React.FC = () => {
           <div className="order-1 lg:order-2 animate-slide-left">
             <div className="relative">
               {/* Main Image Container */}
-              <div className="aspect-square bg-gradient-to-br from-secondary via-blue-100 to-primary rounded-3xl overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center p-8">
-                  {/* Placeholder SVG Illustration */}
-                  <svg
-                    className="w-full h-full"
-                    viewBox="0 0 400 400"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Globe/Travel Icon */}
-                    <circle
-                      cx="200"
-                      cy="200"
-                      r="150"
-                      fill="white"
-                      opacity="0.2"
-                    />
-                    <circle
-                      cx="200"
-                      cy="200"
-                      r="120"
-                      stroke="white"
-                      strokeWidth="3"
-                      opacity="0.6"
-                    />
-
-                    {/* Latitude lines */}
-                    <ellipse
-                      cx="200"
-                      cy="200"
-                      rx="120"
-                      ry="40"
-                      stroke="white"
-                      strokeWidth="2"
-                      opacity="0.4"
-                    />
-                    <ellipse
-                      cx="200"
-                      cy="200"
-                      rx="120"
-                      ry="80"
-                      stroke="white"
-                      strokeWidth="2"
-                      opacity="0.4"
-                    />
-
-                    {/* Longitude line */}
-                    <ellipse
-                      cx="200"
-                      cy="200"
-                      rx="40"
-                      ry="120"
-                      stroke="white"
-                      strokeWidth="2"
-                      opacity="0.4"
-                    />
-
-                    {/* Airplane */}
-                    <g transform="translate(280, 150) rotate(45)">
-                      <path d="M0 0 L20 5 L0 10 L5 5 Z" fill="#FF6B6B" />
-                      <circle cx="25" cy="5" r="3" fill="#FF6B6B" />
-                    </g>
-
-                    {/* Location pins */}
-                    <circle cx="150" cy="180" r="6" fill="#FF6B6B" />
-                    <circle cx="250" cy="220" r="6" fill="#FF6B6B" />
-                    <circle cx="200" cy="150" r="6" fill="#FF6B6B" />
-                  </svg>
-                </div>
+              <div className="aspect-square rounded-3xl overflow-hidden">
+                <img
+                  src="/assets/images/illustration_2.png"
+                  alt="Travel journey illustration"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Decorative Elements */}
