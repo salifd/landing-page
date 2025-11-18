@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import FirstSection from './components/FirstSection';
 import SecondSection from './components/SecondSection';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <FirstSection />
         <SecondSection />
       </main>
+      <Footer />
     </div>
   );
 }
