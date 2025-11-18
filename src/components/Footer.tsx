@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -9,23 +10,23 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           {/* Copyright */}
           <div className="text-gray-600 text-sm">
-            © {currentYear} TravelPay. All rights reserved.
+            © {currentYear} Quikku. All rights reserved.
           </div>
 
           {/* Links */}
           <div className="flex items-center gap-6">
-            <a
-              href="#"
+            <Link
+              to="/terms"
               className="text-gray-600 hover:text-primary text-sm transition-colors"
             >
               Terms of Use
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/privacy"
               className="text-gray-600 hover:text-primary text-sm transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

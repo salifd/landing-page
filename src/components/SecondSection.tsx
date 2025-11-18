@@ -1,4 +1,5 @@
 import React, { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 
 const SecondSection: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -22,17 +23,56 @@ const SecondSection: React.FC = () => {
     setIsValid(true);
     setIsLoading(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      console.log('Submitting to Brevo...', {
+        email,
+        apiKey: import.meta.env.VITE_BREVO_API_KEY ? 'Present' : 'Missing',
+        listId: import.meta.env.VITE_BREVO_LIST_ID
+      });
 
-    setIsLoading(false);
-    setIsSubmitted(true);
+      // Add contact to Brevo
+      const response = await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          listIds: [parseInt(import.meta.env.VITE_BREVO_LIST_ID)],
+          updateEnabled: true,
+        }),
+      });
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setEmail("");
-      setIsSubmitted(false);
-    }, 3000);
+      console.log('Brevo response status:', response.status);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Brevo API error:', errorText);
+        // If contact already exists (409), that's okay
+        if (response.status !== 409) {
+          throw new Error(`Brevo API error: ${response.status}`);
+        }
+      } else {
+        console.log('Successfully added to Brevo!');
+      }
+
+      setIsLoading(false);
+      setIsSubmitted(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setEmail("");
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting to Brevo:', error);
+      setIsLoading(false);
+      // Show error to user instead of hiding it
+      alert('There was an error subscribing. Please try again or check the console for details.');
+      setIsValid(false);
+    }
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -161,19 +201,19 @@ const SecondSection: React.FC = () => {
 
                 <p className="text-sm text-gray-500 text-center mt-4">
                   By filling the form you accept our{" "}
-                  <a
-                    href="#"
+                  <Link
+                    to="/terms"
                     className="text-primary hover:text-accent-dark underline transition-colors"
                   >
                     terms of use
-                  </a>{" "}
+                  </Link>{" "}
                   and{" "}
-                  <a
-                    href="#"
+                  <Link
+                    to="/privacy"
                     className="text-primary hover:text-accent-dark underline transition-colors"
                   >
                     privacy
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>

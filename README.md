@@ -1,4 +1,4 @@
-# TravelPay Landing Page
+# Quikku Landing Page
 
 A modern, sophisticated landing page built with React, TypeScript, and Tailwind CSS for a payment solution targeting travelers.
 
@@ -47,16 +47,19 @@ landing-page/
 ### Installation
 
 1. Navigate to the project directory:
+
 ```bash
 cd /Users/salif/Documents/Development/WebProjects/landing-page
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -73,17 +76,20 @@ npm run dev
 ## Components Overview
 
 ### Header Component
-- Displays the TravelPay logo with modern gradient design
+
+- Displays the Quikku logo with modern gradient design
 - Includes a notification badge for visual appeal
 - Fully responsive with hover animations
 
 ### FirstSection Component
+
 - Features the main value proposition text on the left
 - Includes an SVG illustration of a globe with travel elements on the right
 - Animated entrance with slide effects
 - Decorative gradient background elements
 
 ### SecondSection Component
+
 - Email opt-in form with proper validation
 - Real-time email validation feedback
 - Loading state with spinner animation
@@ -94,6 +100,7 @@ npm run dev
 ## Customization
 
 ### Changing Colors
+
 Edit `tailwind.config.js` to modify the color palette:
 
 ```javascript
@@ -108,12 +115,16 @@ colors: {
 ```
 
 ### Modifying Text Content
+
 Update the text in the respective component files:
+
 - `src/components/FirstSection.tsx` - Journey message
 - `src/components/SecondSection.tsx` - Call-to-action heading
 
 ### Adding Images
+
 Replace the SVG placeholders in the components with actual images:
+
 - Use the `<img>` tag with your image source
 - Or integrate with a service like Unsplash or use local assets
 
@@ -130,6 +141,7 @@ The build output will be in the `dist` directory, ready for deployment.
 ## Deployment
 
 This project can be deployed to any static hosting service:
+
 - Vercel
 - Netlify
 - GitHub Pages
@@ -148,6 +160,7 @@ This project can be deployed to any static hosting service:
 ## Browser Support
 
 This application supports all modern browsers:
+
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
