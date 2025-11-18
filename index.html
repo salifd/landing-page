@@ -76,18 +76,20 @@
         s.parentNode.insertBefore(g, s);
       })();
     </script>
-    <noscript
-      ><p>
-        <img
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://quikkupay.matomo.cloud/matomo.php?idsite=1&amp;rec=1"
-          style="border: 0"
-          alt=""
-        /></p
-    ></noscript>
     <!-- End Matomo Code -->
   </head>
   <body>
+    <!-- Matomo Image Tracker (noscript fallback) -->
+    <noscript>
+      <img
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://quikkupay.matomo.cloud/matomo.php?idsite=1&amp;rec=1"
+        style="border: 0"
+        alt=""
+      />
+    </noscript>
+    <!-- End Matomo Image Tracker -->
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
