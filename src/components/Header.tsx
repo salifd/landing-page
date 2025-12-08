@@ -26,7 +26,7 @@ const Header: React.FC = () => {
               <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent-coral rounded-full border-2 border-white"></div>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-primary">Quikku</h1>
+              <div className="text-3xl font-bold text-primary">Quikku</div>
               <p className="text-xs text-gray-500">Payment reimagined</p>
             </div>
           </div>

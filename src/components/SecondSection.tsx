@@ -93,8 +93,12 @@ const SecondSection: React.FC = () => {
               <div className="aspect-square rounded-3xl overflow-hidden">
                 <img
                   src="/assets/images/illustration_5.jpeg"
-                  alt="Join our community illustration"
+                  alt="Join our community illustration - Be the first to experience innovative travel payments"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="800"
                 />
               </div>
 

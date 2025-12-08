@@ -7,9 +7,9 @@ const FirstSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content - LEFT */}
           <div className="order-2 lg:order-1 animate-slide-right">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-6">
               Starting a new journey.
-            </h2>
+            </h1>
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
               Reimagining how the world moves. We're building something that will change the way you experience every destination.
             </p>
@@ -27,8 +27,12 @@ const FirstSection: React.FC = () => {
               <div className="aspect-square rounded-3xl overflow-hidden">
                 <img
                   src="/assets/images/illustration_2.png"
-                  alt="Travel journey illustration"
+                  alt="Travel journey illustration showing innovative payment solutions for global travelers"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="800"
                 />
               </div>
 

@@ -1,0 +1,12 @@
+# Robots.txt for Quikku
+# Allow all crawlers to access all content
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.quikkupay.com/sitemap.xml
+
+# Optional: Crawl-delay for aggressive bots
+# User-agent: *
+# Crawl-delay: 10

@@ -1,9 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const PrivacyPolicy: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Helmet>
+        <title>Privacy Policy - Quikku</title>
+        <meta
+          name="description"
+          content="Quikku's Privacy Policy. Learn how we collect, use, and protect your personal information. Your privacy is our priority."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.quikkupay.com/privacy" />
+      </Helmet>
+
+      <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="w-full bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -22,14 +34,7 @@ const PrivacyPolicy: React.FC = () => {
           <h1 className="text-4xl font-bold text-primary mb-4">
             Privacy Policy
           </h1>
-          <p className="text-gray-600 mb-8">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </p>
+          <p className="text-gray-600 mb-8">Last updated: December 7, 2025</p>
 
           <div className="prose prose-lg max-w-none">
             <section className="mb-8">
@@ -312,7 +317,8 @@ const PrivacyPolicy: React.FC = () => {
           </div>
         </div>
       </main>
-    </div>
+      </div>
+    </>
   );
 };
 

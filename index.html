@@ -5,6 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.quikkupay.com/" />
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://quikkupay.matomo.cloud" />
+    <link rel="dns-prefetch" href="https://cdn.matomo.cloud" />
+    <link rel="preconnect" href="https://api.brevo.com" />
+
     <!-- Primary Meta Tags -->
     <title>Quikku - The Future of Payment for Travellers</title>
     <meta
@@ -23,6 +31,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.quikkupay.com/" />
     <meta
       property="og:title"
       content="Quikku - The Future of Payment for Travellers"
@@ -31,10 +40,14 @@
       property="og:description"
       content="Reimagining how the world moves. Join us on our journey to design innovative payment solutions for global travelers."
     />
-    <meta property="og:image" content="/assets/images/illustration_2.png" />
+    <meta property="og:image" content="https://www.quikkupay.com/assets/images/illustration_2.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Quikku - Travel Payment Innovation" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.quikkupay.com/" />
     <meta
       property="twitter:title"
       content="Quikku - The Future of Payment for Travellers"
@@ -45,7 +58,7 @@
     />
     <meta
       property="twitter:image"
-      content="/assets/images/illustration_2.png"
+      content="https://www.quikkupay.com/assets/images/illustration_2.png"
     />
 
     <!-- Additional SEO Tags -->
@@ -77,6 +90,62 @@
       })();
     </script>
     <!-- End Matomo Code -->
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Quikku",
+      "alternateName": "QuikkuPay",
+      "url": "https://www.quikkupay.com",
+      "logo": "https://www.quikkupay.com/favicon.svg",
+      "description": "Innovative payment solutions for global travelers. Reimagining how the world moves with seamless cross-border payments.",
+      "foundingDate": "2025",
+      "sameAs": [
+        "https://twitter.com/quikkupay",
+        "https://www.linkedin.com/company/quikku"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "support@quikkupay.com"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Quikku",
+      "url": "https://www.quikkupay.com",
+      "description": "The Future of Payment for Travellers",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.quikkupay.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Payment Processing",
+      "provider": {
+        "@type": "Organization",
+        "name": "Quikku"
+      },
+      "areaServed": "Worldwide",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "International Travelers"
+      },
+      "category": "Financial Technology"
+    }
+    </script>
   </head>
   <body>
     <!-- Matomo Image Tracker (noscript fallback) -->
