@@ -8,6 +8,7 @@ import App from './App.tsx'
 // Lazy load routes that are not immediately visible
 const TermsOfUse = lazy(() => import('./components/TermsOfUse.tsx'))
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy.tsx'))
+const NotFound = lazy(() => import('./components/NotFound.tsx'))
 
 // Loading fallback component
 const LoadingFallback = () => (
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/" element={<App />} />
             <Route path="/terms" element={<TermsOfUse />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

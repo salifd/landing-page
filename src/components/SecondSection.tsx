@@ -1,6 +1,13 @@
 import React, { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 
+// TypeScript declaration for Matomo tracking
+declare global {
+  interface Window {
+    _paq: any[];
+  }
+}
+
 const SecondSection: React.FC = () => {
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true);
@@ -12,11 +19,104 @@ const SecondSection: React.FC = () => {
     return emailRegex.test(email);
   };
 
+  // Helper function to send notification email via Brevo
+  const sendNotificationEmail = async (
+    type: 'success' | 'failure',
+    userEmail: string,
+    errorDetails?: string
+  ) => {
+    try {
+      const subject = type === 'success'
+        ? '✅ New Waitlist Subscription - Quikku'
+        : '❌ Failed Waitlist Subscription - Quikku';
+
+      const htmlContent = type === 'success'
+        ? `
+          <html>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+              <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
+                <h2 style="color: #1e40af; margin-bottom: 20px;">✅ New Waitlist Subscription</h2>
+                <p style="font-size: 16px; margin-bottom: 15px;">
+                  Great news! Someone just joined the Quikku waitlist.
+                </p>
+                <div style="background-color: white; padding: 20px; border-radius: 6px; border-left: 4px solid #10b981;">
+                  <p style="margin: 0; font-weight: bold; color: #1e40af;">Subscriber Email:</p>
+                  <p style="margin: 5px 0 0 0; font-size: 18px; color: #059669;">${userEmail}</p>
+                </div>
+                <p style="margin-top: 20px; font-size: 14px; color: #6b7280;">
+                  This is an automated notification from the Quikku landing page.
+                </p>
+              </div>
+            </body>
+          </html>
+        `
+        : `
+          <html>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+              <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
+                <h2 style="color: #dc2626; margin-bottom: 20px;">❌ Failed Waitlist Subscription</h2>
+                <p style="font-size: 16px; margin-bottom: 15px;">
+                  A waitlist subscription attempt failed for the following email:
+                </p>
+                <div style="background-color: white; padding: 20px; border-radius: 6px; border-left: 4px solid #ef4444;">
+                  <p style="margin: 0; font-weight: bold; color: #1e40af;">Email Address:</p>
+                  <p style="margin: 5px 0 15px 0; font-size: 18px; color: #dc2626;">${userEmail}</p>
+                  ${errorDetails ? `
+                    <p style="margin: 15px 0 0 0; font-weight: bold; color: #1e40af;">Error Details:</p>
+                    <p style="margin: 5px 0 0 0; color: #6b7280; font-size: 14px;">${errorDetails}</p>
+                  ` : ''}
+                </div>
+                <p style="margin-top: 20px; font-size: 14px; color: #6b7280;">
+                  This is an automated notification from the Quikku landing page.
+                </p>
+              </div>
+            </body>
+          </html>
+        `;
+
+      const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'accept': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          sender: {
+            name: 'Quikku Notifications',
+            email: import.meta.env.VITE_EMAIL_FROM,
+          },
+          to: [
+            {
+              email: import.meta.env.VITE_EMAIL_TO,
+              name: 'Dagence Digital',
+            },
+          ],
+          subject: subject,
+          htmlContent: htmlContent,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Failed to send notification email:', await response.text());
+      } else {
+        console.log(`${type} notification email sent successfully`);
+      }
+    } catch (error) {
+      console.error('Error sending notification email:', error);
+      // Don't throw error - we don't want to disrupt the main flow
+    }
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateEmail(email)) {
       setIsValid(false);
+      // Track validation error
+      if (window._paq) {
+        window._paq.push(['trackEvent', 'Waitlist', 'Validation Error', 'Invalid Email']);
+      }
       return;
     }
 
@@ -50,12 +150,27 @@ const SecondSection: React.FC = () => {
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Brevo API error:', errorText);
+
+        // Track API error
+        if (window._paq) {
+          window._paq.push(['trackEvent', 'Waitlist', 'API Error', `Status ${response.status}`]);
+        }
+
         // If contact already exists (409), that's okay
         if (response.status !== 409) {
           throw new Error(`Brevo API error: ${response.status}`);
         }
       } else {
         console.log('Successfully added to Brevo!');
+
+        // Track successful submission
+        if (window._paq) {
+          window._paq.push(['trackEvent', 'Waitlist', 'Signup Success', email]);
+          window._paq.push(['trackGoal', 1]); // Configure goal ID 1 in Matomo dashboard
+        }
+
+        // Send success notification email
+        await sendNotificationEmail('success', email);
       }
 
       setIsLoading(false);
@@ -68,6 +183,17 @@ const SecondSection: React.FC = () => {
       }, 3000);
     } catch (error) {
       console.error('Error submitting to Brevo:', error);
+
+      // Track exception
+      if (window._paq) {
+        window._paq.push(['trackEvent', 'Waitlist', 'Exception', String(error)]);
+      }
+
+      // Send failure notification email (only if email is valid)
+      if (validateEmail(email)) {
+        await sendNotificationEmail('failure', email, String(error));
+      }
+
       setIsLoading(false);
       // Show error to user instead of hiding it
       alert('There was an error subscribing. Please try again or check the console for details.');

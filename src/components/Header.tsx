@@ -2,7 +2,16 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full bg-white animate-fade-in">
+    <>
+      {/* Skip to main content link for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded"
+      >
+        Skip to main content
+      </a>
+
+      <header className="w-full bg-white animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex items-center">
           <div className="flex items-center gap-2">
@@ -32,7 +41,8 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-    </header>
+      </header>
+    </>
   );
 };
 
