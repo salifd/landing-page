@@ -213,7 +213,7 @@ const SecondSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image - LEFT */}
-          <div className="order-2 lg:order-1 animate-slide-right">
+          <div className="order-first animate-slide-right">
             <div className="relative">
               {/* Main Image Container */}
               <div className="aspect-square rounded-3xl overflow-hidden">
@@ -235,7 +235,7 @@ const SecondSection: React.FC = () => {
           </div>
 
           {/* Form - RIGHT */}
-          <div className="order-1 lg:order-2 animate-slide-left">
+          <div className="order-last animate-slide-left">
             <div className="max-w-md lg:ml-auto">
               <h2 className="text-4xl md:text-5xl font-bold text-primary leading-tight mb-6">
                 Be the first to embark with us
