@@ -26,7 +26,7 @@ const FirstSection: React.FC = () => {
               {/* Main Image Container */}
               <div className="aspect-square rounded-3xl overflow-hidden">
                 <img
-                  src="/assets/images/illustration_2.png"
+                  src="/assets/images/illustration_2.webp"
                   alt="Travel journey illustration showing innovative payment solutions for global travelers"
                   className="w-full h-full object-cover"
                   loading="lazy"

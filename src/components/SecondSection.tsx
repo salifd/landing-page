@@ -21,17 +21,19 @@ const SecondSection: React.FC = () => {
 
   // Helper function to send notification email via Brevo
   const sendNotificationEmail = async (
-    type: 'success' | 'failure',
+    type: "success" | "failure",
     userEmail: string,
     errorDetails?: string
   ) => {
     try {
-      const subject = type === 'success'
-        ? '✅ New Waitlist Subscription - Quikku'
-        : '❌ Failed Waitlist Subscription - Quikku';
+      const subject =
+        type === "success"
+          ? "✅ New Waitlist Subscription - Quikku"
+          : "❌ Failed Waitlist Subscription - Quikku";
 
-      const htmlContent = type === 'success'
-        ? `
+      const htmlContent =
+        type === "success"
+          ? `
           <html>
             <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
               <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
@@ -50,7 +52,7 @@ const SecondSection: React.FC = () => {
             </body>
           </html>
         `
-        : `
+          : `
           <html>
             <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
               <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
@@ -61,10 +63,14 @@ const SecondSection: React.FC = () => {
                 <div style="background-color: white; padding: 20px; border-radius: 6px; border-left: 4px solid #ef4444;">
                   <p style="margin: 0; font-weight: bold; color: #1e40af;">Email Address:</p>
                   <p style="margin: 5px 0 15px 0; font-size: 18px; color: #dc2626;">${userEmail}</p>
-                  ${errorDetails ? `
+                  ${
+                    errorDetails
+                      ? `
                     <p style="margin: 15px 0 0 0; font-weight: bold; color: #1e40af;">Error Details:</p>
                     <p style="margin: 5px 0 0 0; color: #6b7280; font-size: 14px;">${errorDetails}</p>
-                  ` : ''}
+                  `
+                      : ""
+                  }
                 </div>
                 <p style="margin-top: 20px; font-size: 14px; color: #6b7280;">
                   This is an automated notification from the Quikku landing page.
@@ -74,22 +80,22 @@ const SecondSection: React.FC = () => {
           </html>
         `;
 
-      const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-        method: 'POST',
+      const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
         headers: {
-          'accept': 'application/json',
-          'api-key': import.meta.env.VITE_BREVO_API_KEY,
-          'content-type': 'application/json',
+          accept: "application/json",
+          "api-key": import.meta.env.VITE_BREVO_API_KEY,
+          "content-type": "application/json",
         },
         body: JSON.stringify({
           sender: {
-            name: 'Quikku Notifications',
+            name: "Quikku Notifications",
             email: import.meta.env.VITE_EMAIL_FROM,
           },
           to: [
             {
               email: import.meta.env.VITE_EMAIL_TO,
-              name: 'Dagence Digital',
+              name: "Dagence Digital",
             },
           ],
           subject: subject,
@@ -98,12 +104,15 @@ const SecondSection: React.FC = () => {
       });
 
       if (!response.ok) {
-        console.error('Failed to send notification email:', await response.text());
+        console.error(
+          "Failed to send notification email:",
+          await response.text()
+        );
       } else {
         console.log(`${type} notification email sent successfully`);
       }
     } catch (error) {
-      console.error('Error sending notification email:', error);
+      console.error("Error sending notification email:", error);
       // Don't throw error - we don't want to disrupt the main flow
     }
   };
@@ -115,7 +124,12 @@ const SecondSection: React.FC = () => {
       setIsValid(false);
       // Track validation error
       if (window._paq) {
-        window._paq.push(['trackEvent', 'Waitlist', 'Validation Error', 'Invalid Email']);
+        window._paq.push([
+          "trackEvent",
+          "Waitlist",
+          "Validation Error",
+          "Invalid Email",
+        ]);
       }
       return;
     }
@@ -124,19 +138,19 @@ const SecondSection: React.FC = () => {
     setIsLoading(true);
 
     try {
-      console.log('Submitting to Brevo...', {
+      console.log("Submitting to Brevo...", {
         email,
-        apiKey: import.meta.env.VITE_BREVO_API_KEY ? 'Present' : 'Missing',
-        listId: import.meta.env.VITE_BREVO_LIST_ID
+        apiKey: import.meta.env.VITE_BREVO_API_KEY ? "Present" : "Missing",
+        listId: import.meta.env.VITE_BREVO_LIST_ID,
       });
 
       // Add contact to Brevo
-      const response = await fetch('https://api.brevo.com/v3/contacts', {
-        method: 'POST',
+      const response = await fetch("https://api.brevo.com/v3/contacts", {
+        method: "POST",
         headers: {
-          'accept': 'application/json',
-          'api-key': import.meta.env.VITE_BREVO_API_KEY,
-          'content-type': 'application/json',
+          accept: "application/json",
+          "api-key": import.meta.env.VITE_BREVO_API_KEY,
+          "content-type": "application/json",
         },
         body: JSON.stringify({
           email: email,
@@ -145,15 +159,20 @@ const SecondSection: React.FC = () => {
         }),
       });
 
-      console.log('Brevo response status:', response.status);
+      console.log("Brevo response status:", response.status);
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('Brevo API error:', errorText);
+        console.error("Brevo API error:", errorText);
 
         // Track API error
         if (window._paq) {
-          window._paq.push(['trackEvent', 'Waitlist', 'API Error', `Status ${response.status}`]);
+          window._paq.push([
+            "trackEvent",
+            "Waitlist",
+            "API Error",
+            `Status ${response.status}`,
+          ]);
         }
 
         // If contact already exists (409), that's okay
@@ -161,16 +180,16 @@ const SecondSection: React.FC = () => {
           throw new Error(`Brevo API error: ${response.status}`);
         }
       } else {
-        console.log('Successfully added to Brevo!');
+        console.log("Successfully added to Brevo!");
 
         // Track successful submission
         if (window._paq) {
-          window._paq.push(['trackEvent', 'Waitlist', 'Signup Success', email]);
-          window._paq.push(['trackGoal', 1]); // Configure goal ID 1 in Matomo dashboard
+          window._paq.push(["trackEvent", "Waitlist", "Signup Success", email]);
+          window._paq.push(["trackGoal", 1]); // Configure goal ID 1 in Matomo dashboard
         }
 
         // Send success notification email
-        await sendNotificationEmail('success', email);
+        await sendNotificationEmail("success", email);
       }
 
       setIsLoading(false);
@@ -182,21 +201,28 @@ const SecondSection: React.FC = () => {
         setIsSubmitted(false);
       }, 3000);
     } catch (error) {
-      console.error('Error submitting to Brevo:', error);
+      console.error("Error submitting to Brevo:", error);
 
       // Track exception
       if (window._paq) {
-        window._paq.push(['trackEvent', 'Waitlist', 'Exception', String(error)]);
+        window._paq.push([
+          "trackEvent",
+          "Waitlist",
+          "Exception",
+          String(error),
+        ]);
       }
 
       // Send failure notification email (only if email is valid)
       if (validateEmail(email)) {
-        await sendNotificationEmail('failure', email, String(error));
+        await sendNotificationEmail("failure", email, String(error));
       }
 
       setIsLoading(false);
       // Show error to user instead of hiding it
-      alert('There was an error subscribing. Please try again or check the console for details.');
+      alert(
+        "There was an error subscribing. Please try again or check the console for details."
+      );
       setIsValid(false);
     }
   };
@@ -218,7 +244,7 @@ const SecondSection: React.FC = () => {
               {/* Main Image Container */}
               <div className="aspect-square rounded-3xl overflow-hidden">
                 <img
-                  src="/assets/images/illustration_5.jpeg"
+                  src="/assets/images/illustration_5.webp"
                   alt="Join our community illustration - Be the first to experience innovative travel payments"
                   className="w-full h-full object-cover"
                   loading="lazy"
