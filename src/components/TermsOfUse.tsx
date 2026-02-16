@@ -13,6 +13,18 @@ const TermsOfUse: React.FC = () => {
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.quikkupay.com/terms" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.quikkupay.com/terms" />
+        <meta property="og:title" content="Terms of Use - Quikku" />
+        <meta property="og:description" content="Read Quikku's Terms of Use. Learn about our waitlist registration, user responsibilities, and service terms for innovative travel payment solutions." />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content="https://www.quikkupay.com/terms" />
+        <meta property="twitter:title" content="Terms of Use - Quikku" />
+        <meta property="twitter:description" content="Read Quikku's Terms of Use. Learn about our waitlist registration, user responsibilities, and service terms for innovative travel payment solutions." />
       </Helmet>
 
       <div className="min-h-screen bg-white">

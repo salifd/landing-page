@@ -13,6 +13,18 @@ const PrivacyPolicy: React.FC = () => {
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.quikkupay.com/privacy" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.quikkupay.com/privacy" />
+        <meta property="og:title" content="Privacy Policy - Quikku" />
+        <meta property="og:description" content="Quikku's Privacy Policy. Learn how we collect, use, and protect your personal information. Your privacy is our priority." />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary" />
+        <meta property="twitter:url" content="https://www.quikkupay.com/privacy" />
+        <meta property="twitter:title" content="Privacy Policy - Quikku" />
+        <meta property="twitter:description" content="Quikku's Privacy Policy. Learn how we collect, use, and protect your personal information. Your privacy is our priority." />
       </Helmet>
 
       <div className="min-h-screen bg-white">

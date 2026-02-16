@@ -26,3 +26,6 @@ dist-ssr
 .DS_Store
 .env
 .claude/
+
+# PHP API config (contains sensitive keys)
+api/config.php
