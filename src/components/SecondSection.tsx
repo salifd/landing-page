@@ -2,7 +2,7 @@ import React, { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 
 // API endpoint URL - update this based on your deployment
-const API_URL = import.meta.env.VITE_API_URL || "/api";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const SecondSection: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ const SecondSection: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/subscribe.php`, {
+      const response = await fetch(`${API_URL}/api/subscribe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

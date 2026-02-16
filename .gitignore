@@ -27,5 +27,11 @@ dist-ssr
 .env
 .claude/
 
-# PHP API config (contains sensitive keys)
+# PHP config (contains sensitive keys)
 api/config.php
+public/config.php
+config.php
+
+# PHP dependencies and environment
+php/vendor/
+php/.env

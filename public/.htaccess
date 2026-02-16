@@ -2,8 +2,8 @@
   RewriteEngine On
   RewriteBase /
 
-  # Don't rewrite requests to the API folder - let PHP handle them
-  RewriteRule ^api/ - [L]
+  # Route /api/* requests to the Slim front controller
+  RewriteRule ^api(/.*)?$ api.php [QSA,L]
 
   # Don't rewrite files or directories that exist
   RewriteCond %{REQUEST_FILENAME} !-f
