@@ -79,8 +79,8 @@ const FirstSection: React.FC = () => {
               <div className="absolute -top-8 -right-8 w-32 h-32 bg-accent-coral/20 rounded-full blur-2xl pointer-events-none" />
               <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-secondary/12 rounded-full blur-2xl pointer-events-none" />
 
-              {/* Floating access card — hidden on small screens to avoid overflow */}
-              <div className="hidden sm:block animate-float absolute -bottom-5 -left-8 bg-white/[0.07] backdrop-blur-xl border border-white/[0.14] rounded-2xl p-4 shadow-2xl min-w-[190px]">
+              {/* Floating access card */}
+              <div className="animate-float absolute bottom-3 left-3 sm:-bottom-5 sm:-left-8 bg-white/[0.07] backdrop-blur-xl border border-white/[0.14] rounded-2xl p-4 shadow-2xl min-w-[190px]">
                 <div className="flex items-center gap-2 mb-3.5">
                   <div className="w-6 h-6 rounded-lg bg-secondary/15 flex items-center justify-center flex-shrink-0">
                     <svg className="w-3.5 h-3.5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">

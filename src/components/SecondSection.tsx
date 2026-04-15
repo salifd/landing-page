@@ -106,8 +106,8 @@ const SecondSection: React.FC = () => {
               <div className="absolute -top-8 -left-8 w-32 h-32 bg-primary/50 rounded-full blur-2xl pointer-events-none" />
               <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-accent-coral/12 rounded-full blur-2xl pointer-events-none" />
 
-              {/* Floating badge — hidden on small screens */}
-              <div className="hidden sm:block animate-float absolute -top-5 -right-6 bg-white/[0.07] backdrop-blur-xl border border-white/[0.13] rounded-2xl px-4 py-3 shadow-2xl" style={{ animationDelay: '1.5s' }}>
+              {/* Floating badge */}
+              <div className="animate-float absolute top-3 right-3 sm:-top-5 sm:-right-6 bg-white/[0.07] backdrop-blur-xl border border-white/[0.13] rounded-2xl px-4 py-3 shadow-2xl" style={{ animationDelay: '1.5s' }}>
                 <div className="text-secondary text-[10px] font-semibold uppercase tracking-[0.2em] mb-0.5">
                   Waitlist
                 </div>
