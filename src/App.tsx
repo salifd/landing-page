@@ -16,7 +16,7 @@ function App() {
         <link rel="canonical" href="https://www.quikkupay.com/" />
       </Helmet>
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#000d2e]">
         <Header />
         <main id="main-content">
           <FirstSection />

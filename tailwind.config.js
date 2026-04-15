@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['"Fraunces"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         primary: '#0A2472',
         secondary: '#A6E1FA',
@@ -15,10 +19,12 @@ export default {
         },
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-in-out',
-        'slide-up': 'slideUp 0.6s ease-out',
-        'slide-left': 'slideLeft 0.6s ease-out',
-        'slide-right': 'slideRight 0.6s ease-out',
+        'fade-in': 'fadeIn 0.7s ease-in-out both',
+        'slide-up': 'slideUp 0.5s ease-out both',
+        'slide-left': 'slideLeft 0.7s ease-out both',
+        'slide-right': 'slideRight 0.7s ease-out both',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -36,6 +42,10 @@ export default {
         slideRight: {
           '0%': { transform: 'translateX(-30px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
       },
     },

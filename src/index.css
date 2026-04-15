@@ -7,7 +7,20 @@
     @apply antialiased;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply m-0 min-h-screen;
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    background-color: #000d2e;
+  }
+}
+
+@layer utilities {
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(166, 225, 250, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 }
