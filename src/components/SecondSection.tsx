@@ -1,5 +1,6 @@
 import React, { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -56,6 +57,9 @@ const SecondSection: React.FC = () => {
     }
   };
 
+  const { ref: leftRef, isVisible: leftVisible } = useScrollReveal();
+  const { ref: rightRef, isVisible: rightVisible } = useScrollReveal();
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (!isValid) {
@@ -67,10 +71,9 @@ const SecondSection: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-[#010e34] py-24 md:py-32 overflow-hidden">
+    <section id="waitlist" className="relative w-full bg-[#010e34] py-24 md:py-32 overflow-hidden">
       {/* Background atmosphere */}
       <div className="absolute inset-0 dot-grid opacity-35 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
       <div className="absolute top-1/3 right-0 w-80 h-80 bg-accent-coral/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 left-0 w-80 h-80 bg-primary/25 rounded-full blur-[100px] pointer-events-none" />
 
@@ -78,13 +81,13 @@ const SecondSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Image — LEFT */}
-          <div className="order-first animate-slide-right">
+          <div ref={leftRef} className={`order-first transition-opacity duration-100 ${leftVisible ? 'animate-slide-right' : 'opacity-0'}`}>
             <div className="relative">
               {/* Orbital ring */}
               <div className="absolute inset-[-20px] rounded-full border border-dashed border-secondary/[0.07] pointer-events-none" />
 
               {/* Main Image */}
-              <div className="aspect-square rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-2xl shadow-accent-dark/60">
+              <div className="relative aspect-square rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-2xl shadow-accent-dark/60">
                 <img
                   src="/assets/images/illustration_5.webp"
                   alt="Join our community illustration - Be the first to experience innovative travel payments"
@@ -94,14 +97,17 @@ const SecondSection: React.FC = () => {
                   width="800"
                   height="800"
                 />
+                {/* Blend illustration edges into dark bg */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#010e34]/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-l from-[#010e34]/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Glow halos */}
               <div className="absolute -top-8 -left-8 w-32 h-32 bg-primary/50 rounded-full blur-2xl pointer-events-none" />
               <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-accent-coral/12 rounded-full blur-2xl pointer-events-none" />
 
-              {/* Floating badge */}
-              <div className="animate-float absolute -top-5 -right-6 bg-white/[0.07] backdrop-blur-xl border border-white/[0.13] rounded-2xl px-4 py-3 shadow-2xl">
+              {/* Floating badge — hidden on small screens */}
+              <div className="hidden sm:block animate-float absolute -top-5 -right-6 bg-white/[0.07] backdrop-blur-xl border border-white/[0.13] rounded-2xl px-4 py-3 shadow-2xl" style={{ animationDelay: '1.5s' }}>
                 <div className="text-secondary text-[10px] font-semibold uppercase tracking-[0.2em] mb-0.5">
                   Waitlist
                 </div>
@@ -116,7 +122,7 @@ const SecondSection: React.FC = () => {
           </div>
 
           {/* Form — RIGHT */}
-          <div className="order-last animate-slide-left">
+          <div ref={rightRef} className={`order-last transition-opacity duration-100 ${rightVisible ? 'animate-slide-left' : 'opacity-0'}`}>
             <div className="max-w-md lg:ml-auto">
               {/* Eyebrow badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent-coral/25 bg-accent-coral/[0.07] mb-8">

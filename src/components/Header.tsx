@@ -12,9 +12,9 @@ const Header: React.FC = () => {
 
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#000d2e]/80 backdrop-blur-md border-b border-white/[0.06] animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center">
+          <div className="flex items-center justify-between">
+            {/* Logo + Brand */}
             <div className="flex items-center gap-3">
-              {/* Logo Mark */}
               <div className="w-10 h-10 bg-gradient-to-br from-accent-coral to-[#c9402a] rounded-xl flex items-center justify-center shadow-lg shadow-accent-coral/20 hover:scale-105 transition-transform duration-300 flex-shrink-0">
                 <svg
                   className="w-5 h-5 text-white"
@@ -30,8 +30,6 @@ const Header: React.FC = () => {
                   />
                 </svg>
               </div>
-
-              {/* Brand Text */}
               <div>
                 <div className="font-display text-[1.375rem] font-bold text-white leading-none tracking-tight">
                   Quikku
@@ -41,6 +39,14 @@ const Header: React.FC = () => {
                 </p>
               </div>
             </div>
+
+            {/* CTA */}
+            <a
+              href="#waitlist"
+              className="px-4 py-2 text-sm font-semibold text-white bg-accent-coral hover:bg-[#e55a5a] rounded-lg transition-all duration-200 shadow-sm shadow-accent-coral/20 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-accent-coral/50"
+            >
+              Get early access
+            </a>
           </div>
         </div>
       </header>

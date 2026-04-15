@@ -5,8 +5,15 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full bg-[#000d2e] border-t border-white/[0.06]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <footer className="relative w-full bg-[#000d2e] border-t border-white/[0.06] overflow-hidden">
+      {/* Ghost wordmark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+        <span className="font-display text-[10rem] md:text-[14rem] font-bold text-white/[0.025] leading-none tracking-tight">
+          Quikku
+        </span>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-white/20 text-sm">
             © {currentYear} Quikku. All rights reserved.
