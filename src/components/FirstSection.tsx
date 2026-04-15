@@ -50,6 +50,17 @@ const FirstSection: React.FC = () => {
               <div className="w-8 h-0.5 bg-secondary/40 rounded-full" />
               <div className="w-4 h-0.5 bg-white/15 rounded-full" />
             </div>
+
+            <a
+              href="#waitlist"
+              className="inline-flex items-center gap-2.5 mt-10 px-7 py-3.5 bg-accent-coral hover:bg-[#e55a5a] text-white text-base font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-accent-coral/20 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-accent-coral/50 animate-slide-right"
+              style={{ animationDelay: '0.65s' }}
+            >
+              Join the waitlist
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
 
           {/* Image — RIGHT */}

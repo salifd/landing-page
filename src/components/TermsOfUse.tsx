@@ -27,13 +27,13 @@ const TermsOfUse: React.FC = () => {
         <meta property="twitter:description" content="Read Quikku's Terms of Use. Learn about our waitlist registration, user responsibilities, and service terms for innovative travel payment solutions." />
       </Helmet>
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#000d2e]">
         {/* Header */}
-        <header className="w-full bg-white border-b border-gray-200">
+        <header className="w-full bg-[#000d2e]/80 backdrop-blur-md border-b border-white/[0.06]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <Link
               to="/"
-              className="text-primary hover:text-accent-dark transition-colors"
+              className="text-white/50 hover:text-secondary transition-colors duration-200"
             >
               ← Back to Home
             </Link>
@@ -43,17 +43,17 @@ const TermsOfUse: React.FC = () => {
         {/* Content */}
         <main className="w-full py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-bold text-primary mb-4">
+            <h1 className="font-display text-4xl font-bold text-white mb-4">
               Terms of Use
             </h1>
-            <p className="text-gray-600 mb-8">Last updated: December 7, 2025</p>
+            <p className="text-white/40 mb-8">Last updated: December 7, 2025</p>
 
             <div className="prose prose-lg max-w-none">
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   1. Acceptance of Terms
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   By accessing and using Quikku's website and services, you
                   acknowledge that you have read, understood, and agree to be
                   bound by these Terms of Use. If you do not agree to these
@@ -62,13 +62,13 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   2. Waitlist Registration
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   By joining our waitlist, you agree to:
                 </p>
-                <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <ul className="list-disc pl-6 text-white/65 mb-4 space-y-2">
                   <li>Provide accurate and complete information</li>
                   <li>
                     Receive email communications from Quikku regarding our
@@ -86,10 +86,10 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   3. Intellectual Property
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   All content, features, and functionality on this website,
                   including but not limited to text, graphics, logos, images,
                   and software, are the exclusive property of Quikku and are
@@ -99,11 +99,11 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   4. User Conduct
                 </h2>
-                <p className="text-gray-700 mb-4">You agree not to:</p>
-                <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                <p className="text-white/65 mb-4">You agree not to:</p>
+                <ul className="list-disc pl-6 text-white/65 mb-4 space-y-2">
                   <li>
                     Use the website for any unlawful purpose or in violation of
                     these Terms
@@ -121,10 +121,10 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   5. Service Availability
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   Quikku is currently in development. We reserve the right to
                   modify, suspend, or discontinue any aspect of the website or
                   services at any time without notice. We do not guarantee that
@@ -134,10 +134,10 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   6. Disclaimer of Warranties
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   The website and services are provided "as is" and "as
                   available" without warranties of any kind, either express or
                   implied, including but not limited to implied warranties of
@@ -147,10 +147,10 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   7. Limitation of Liability
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   To the fullest extent permitted by law, Quikku shall not be
                   liable for any indirect, incidental, special, consequential,
                   or punitive damages, or any loss of profits or revenues,
@@ -160,10 +160,10 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   8. Changes to Terms
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   We reserve the right to modify these Terms of Use at any time.
                   We will notify users of any material changes by updating the
                   "Last updated" date at the top of this page. Your continued
@@ -173,14 +173,14 @@ const TermsOfUse: React.FC = () => {
               </section>
 
               <section className="mb-8">
-                <h2 className="text-2xl font-bold text-primary mb-4">
+                <h2 className="font-display text-2xl font-bold text-white mb-4">
                   9. Contact Information
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-white/65 mb-4">
                   If you have any questions about these Terms of Use, please
                   contact us at:
                 </p>
-                <p className="text-gray-700">Email: legal@quikkupay.com</p>
+                <p className="text-white/65">Email: legal@quikkupay.com</p>
               </section>
             </div>
           </div>
