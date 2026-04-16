@@ -12,9 +12,7 @@ const NotFound = lazy(() => import('./components/NotFound.tsx'))
 
 // Loading fallback component
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-white">
-    <div className="text-primary text-xl">Loading...</div>
-  </div>
+  <div className="min-h-screen flex items-center justify-center bg-[#000d2e]" />
 )
 
 createRoot(document.getElementById('root')!).render(
