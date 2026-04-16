@@ -5,36 +5,66 @@ const features = [
   {
     number: "01",
     title: "Effortless",
-    body: "Complexity has no place in your journey. We stripped away everything that shouldn't be there — so you never have to think about it.",
+    body: "Complexity has no place in your journey. We stripped away everything that shouldn't be there so you never have to think about it.",
     accent: "bg-secondary/10 text-secondary",
     delay: "0s",
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.75}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
       </svg>
     ),
   },
   {
     number: "02",
     title: "Everywhere",
-    body: "Built without borders. Wherever the road takes you, we'll already be there — ready before you arrive.",
+    body: "Built without borders. Wherever the road takes you, we'll already be there ready before you arrive.",
     accent: "bg-accent-coral/10 text-accent-coral/80",
     delay: "0.15s",
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.75}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
       </svg>
     ),
   },
   {
     number: "03",
     title: "Connected",
-    body: "The gap between where you are and where you want to pay — closed. One step, any destination.",
+    body: "The gap between where you are and where you want to pay closed. One step, any destination.",
     accent: "bg-white/[0.05] text-white/40",
     delay: "0.3s",
     icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+      <svg
+        className="w-5 h-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.75}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+        />
       </svg>
     ),
   },
@@ -61,7 +91,10 @@ const FeaturesSection: React.FC = () => {
         </div>
 
         {/* Cards */}
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+        <div
+          ref={ref}
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6"
+        >
           {features.map((f) => (
             <div
               key={f.number}
@@ -76,7 +109,9 @@ const FeaturesSection: React.FC = () => {
               </div>
 
               {/* Icon */}
-              <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${f.accent} mb-6`}>
+              <div
+                className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${f.accent} mb-6`}
+              >
                 {f.icon}
               </div>
 
@@ -84,9 +119,7 @@ const FeaturesSection: React.FC = () => {
               <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-secondary transition-colors duration-300">
                 {f.title}
               </h3>
-              <p className="text-white/40 text-sm leading-relaxed">
-                {f.body}
-              </p>
+              <p className="text-white/40 text-sm leading-relaxed">{f.body}</p>
 
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
