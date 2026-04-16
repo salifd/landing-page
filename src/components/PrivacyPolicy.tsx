@@ -54,7 +54,7 @@ const PrivacyPolicy: React.FC = () => {
                   1. Introduction
                 </h2>
                 <p className="text-white/65 mb-4">
-                  Quikku ("we," "our," or "us") is committed to protecting your
+                  Quikku Pte. Ltd. ("we," "our," or "us") is committed to protecting your
                   privacy. This Privacy Policy explains how we collect, use,
                   disclose, and safeguard your information when you visit our
                   website and use our services. Please read this policy

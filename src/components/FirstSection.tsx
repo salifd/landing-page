@@ -5,9 +5,9 @@ const FirstSection: React.FC = () => {
     <section className="relative w-full bg-[#000d2e] pt-20 min-h-screen flex items-center overflow-hidden">
       {/* Background atmosphere */}
       <div className="absolute inset-0 dot-grid opacity-50 pointer-events-none" />
-      <div className="absolute top-1/4 -right-40 w-[500px] h-[500px] bg-primary/35 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-40 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent-dark/25 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-40 w-[500px] h-[500px] bg-primary/35 rounded-full blur-[120px] pointer-events-none animate-drift-1" />
+      <div className="absolute bottom-1/4 -left-40 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[100px] pointer-events-none animate-drift-2" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-accent-dark/25 rounded-full blur-[130px] pointer-events-none animate-drift-1" style={{ animationDelay: '-9s' }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -103,7 +103,7 @@ const FirstSection: React.FC = () => {
                   </span>
                 </div>
                 <div className="font-display text-white text-[1.6rem] font-bold leading-none mb-1">
-                  Pioneer
+                  Explorer
                 </div>
                 <div className="text-secondary/80 text-sm font-medium mb-3.5">
                   Early access member

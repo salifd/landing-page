@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Header from './components/Header';
 import FirstSection from './components/FirstSection';
 import MarqueeSection from './components/MarqueeSection';
+import FeaturesSection from './components/FeaturesSection';
 import SecondSection from './components/SecondSection';
 import Footer from './components/Footer';
 
@@ -22,6 +23,7 @@ function App() {
         <main id="main-content">
           <FirstSection />
           <MarqueeSection />
+          <FeaturesSection />
           <SecondSection />
         </main>
         <Footer />
