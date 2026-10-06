@@ -1,6 +1,6 @@
 # Quikku Landing Page
 
-A modern, sophisticated landing page built with React, TypeScript, and Tailwind CSS for a payment solution targeting travelers.
+A modern, sophisticated landing page built with Next.js (App Router), React, TypeScript, and Tailwind CSS for a payment solution targeting travelers.
 
 ## Features
 
@@ -24,17 +24,20 @@ A modern, sophisticated landing page built with React, TypeScript, and Tailwind 
 ```
 landing-page/
 ├── src/
-│   ├── components/
-│   │   ├── Header.tsx          # Logo and branding
-│   │   ├── FirstSection.tsx    # Journey introduction with image
-│   │   └── SecondSection.tsx   # Opt-in form with validation
-│   ├── App.tsx                 # Main application component
-│   ├── main.tsx               # Application entry point
-│   └── index.css              # Tailwind CSS directives
-├── tailwind.config.js         # Tailwind configuration with custom theme
-├── postcss.config.js          # PostCSS configuration
-├── index.html                 # HTML entry point
-└── package.json               # Dependencies and scripts
+│   ├── app/                    # Next.js App Router
+│   │   ├── layout.tsx          # Root layout: metadata, fonts, JSON-LD, Matomo
+│   │   ├── page.tsx            # Home page (/)
+│   │   ├── terms/page.tsx      # Terms of Use (/terms)
+│   │   ├── privacy/page.tsx    # Privacy Policy (/privacy)
+│   │   ├── not-found.tsx       # 404 page
+│   │   └── globals.css         # Tailwind CSS directives and global styles
+│   ├── components/             # Page sections and page bodies
+│   └── hooks/                  # Client-side hooks (scroll reveal)
+├── public/                     # Static assets, .htaccess, api.php
+├── php/                        # Slim PHP API (waitlist subscription via Brevo)
+├── next.config.ts              # Next.js config (static export, dev /api proxy)
+├── tailwind.config.js          # Tailwind configuration with custom theme
+└── package.json                # Dependencies and scripts
 ```
 
 ## Getting Started
@@ -46,31 +49,26 @@ landing-page/
 
 ### Installation
 
-1. Navigate to the project directory:
-
-```bash
-cd /Users/salif/Documents/Development/WebProjects/landing-page
-```
-
-2. Install dependencies:
+1. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Start the development server:
+2. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open your browser and visit the URL shown in the terminal (typically `http://localhost:5173`)
+3. Open your browser and visit `http://localhost:3000`
+
+During development, requests to `/api/*` are proxied to the PHP API at `http://localhost:8080` (e.g. `php -S localhost:8080 -t public`). To call an API on another origin, set `NEXT_PUBLIC_API_URL`.
 
 ## Available Scripts
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview the production build
+- `npm run dev` - Start the Next.js development server
+- `npm run build` - Build and export the static site to `out/`
 - `npm run lint` - Run ESLint for code quality
 
 ## Components Overview
@@ -136,23 +134,19 @@ To create a production build:
 npm run build
 ```
 
-The build output will be in the `dist` directory, ready for deployment.
+The site is statically exported (`output: "export"`) to the `out` directory, ready for deployment.
 
 ## Deployment
 
-This project can be deployed to any static hosting service:
+Upload the contents of `out/` to the Apache document root, with the `php/` directory beside it (run `composer install` in `php/`). The bundled `.htaccess` routes `/api/*` to the PHP API, serves pages without the `.html` extension (`/terms` → `terms.html`) and uses `404.html` for unknown URLs.
 
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS S3 + CloudFront
-- Firebase Hosting
+The `out/` folder can also be hosted on any static host (Vercel, Netlify, S3 + CloudFront, ...) as long as the `/api` endpoint is provided separately.
 
 ## Technologies Used
 
-- React 18
+- Next.js 16 (App Router, static export)
+- React 19
 - TypeScript
-- Vite
 - Tailwind CSS
 - PostCSS
 - Autoprefixer

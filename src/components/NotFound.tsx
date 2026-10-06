@@ -1,15 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Link from "next/link";
 
 const NotFound: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>404 - Page Not Found | Quikku</title>
-        <meta name="robots" content="noindex, follow" />
-      </Helmet>
-
       <div className="relative min-h-screen bg-[#000d2e] flex items-center justify-center px-4 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none" />
@@ -30,7 +24,7 @@ const NotFound: React.FC = () => {
               The page you're looking for doesn't exist or has been moved.
             </p>
             <Link
-              to="/"
+              href="/"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent-coral hover:bg-[#e55a5a] text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-accent-coral/20 hover:scale-[1.02] active:scale-[0.98]"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

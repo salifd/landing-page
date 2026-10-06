@@ -1,38 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Link from "next/link";
 
 const TermsOfUse: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>Terms of Use - Quikku</title>
-        <meta
-          name="description"
-          content="Read Quikku's Terms of Use. Learn about our waitlist registration, user responsibilities, and service terms for innovative travel payment solutions."
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.quikkupay.com/terms" />
-
-        {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.quikkupay.com/terms" />
-        <meta property="og:title" content="Terms of Use - Quikku" />
-        <meta property="og:description" content="Read Quikku's Terms of Use. Learn about our waitlist registration, user responsibilities, and service terms for innovative travel payment solutions." />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://www.quikkupay.com/terms" />
-        <meta property="twitter:title" content="Terms of Use - Quikku" />
-        <meta property="twitter:description" content="Read Quikku's Terms of Use. Learn about our waitlist registration, user responsibilities, and service terms for innovative travel payment solutions." />
-      </Helmet>
-
       <div className="min-h-screen bg-[#000d2e]">
         {/* Header */}
         <header className="w-full bg-[#000d2e]/80 backdrop-blur-md border-b border-white/[0.06]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <Link
-              to="/"
+              href="/"
               className="text-white/50 hover:text-secondary transition-colors duration-200"
             >
               ← Back to Home

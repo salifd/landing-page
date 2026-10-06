@@ -1,5 +1,7 @@
 Options -Indexes
 
+ErrorDocument 404 /404.html
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -7,10 +9,9 @@ Options -Indexes
   # Route /api/* requests to the Slim front controller
   RewriteRule ^api(/.*)?$ api.php [QSA,L]
 
-  # Don't rewrite files or directories that exist
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-
-  # Rewrite everything else to index.html for SPA routing
-  RewriteRule ^ index.html [L]
+  # Serve statically exported Next.js pages without the .html extension
+  # (e.g. /terms -> /terms.html). Checked before directories because the
+  # export also creates a /terms/ folder holding client navigation data.
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
 </IfModule>
