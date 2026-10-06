@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -21,13 +21,13 @@ const Footer: React.FC = () => {
 
           <div className="flex items-center gap-6">
             <Link
-              to="/terms"
+              href="/terms"
               className="text-white/25 hover:text-secondary text-sm transition-colors duration-200"
             >
               Terms of Use
             </Link>
             <Link
-              to="/privacy"
+              href="/privacy"
               className="text-white/25 hover:text-secondary text-sm transition-colors duration-200"
             >
               Privacy Policy

@@ -1,38 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Link from "next/link";
 
 const PrivacyPolicy: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>Privacy Policy - Quikku</title>
-        <meta
-          name="description"
-          content="Quikku's Privacy Policy. Learn how we collect, use, and protect your personal information. Your privacy is our priority."
-        />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.quikkupay.com/privacy" />
-
-        {/* Open Graph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.quikkupay.com/privacy" />
-        <meta property="og:title" content="Privacy Policy - Quikku" />
-        <meta property="og:description" content="Quikku's Privacy Policy. Learn how we collect, use, and protect your personal information. Your privacy is our priority." />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary" />
-        <meta property="twitter:url" content="https://www.quikkupay.com/privacy" />
-        <meta property="twitter:title" content="Privacy Policy - Quikku" />
-        <meta property="twitter:description" content="Quikku's Privacy Policy. Learn how we collect, use, and protect your personal information. Your privacy is our priority." />
-      </Helmet>
-
       <div className="min-h-screen bg-[#000d2e]">
         {/* Header */}
         <header className="w-full bg-[#000d2e]/80 backdrop-blur-md border-b border-white/[0.06]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <Link
-              to="/"
+              href="/"
               className="text-white/50 hover:text-secondary transition-colors duration-200"
             >
               ← Back to Home

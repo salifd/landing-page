@@ -35,3 +35,9 @@ config.php
 # PHP dependencies and environment
 php/vendor/
 php/.env
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo

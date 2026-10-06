@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const API_URL = import.meta.env.VITE_API_URL || "";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 const SecondSection: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -249,14 +251,14 @@ const SecondSection: React.FC = () => {
                 <p className="text-xs text-white/25 text-center pt-1">
                   By joining you accept our{" "}
                   <Link
-                    to="/terms"
+                    href="/terms"
                     className="text-white/45 hover:text-secondary underline underline-offset-2 transition-colors duration-200"
                   >
                     terms of use
                   </Link>{" "}
                   and{" "}
                   <Link
-                    to="/privacy"
+                    href="/privacy"
                     className="text-white/45 hover:text-secondary underline underline-offset-2 transition-colors duration-200"
                   >
                     privacy policy
