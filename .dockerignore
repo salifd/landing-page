@@ -1,0 +1,14 @@
+# Keep secrets, local builds and tooling out of the image
+.env
+.env.*
+!.env.example
+node_modules
+.next
+out
+.git
+.github
+.claude
+*.log
+Dockerfile
+docker-compose.yml
+Caddyfile

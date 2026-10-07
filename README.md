@@ -33,9 +33,12 @@ landing-page/
 │   │   └── globals.css         # Tailwind CSS directives and global styles
 │   ├── components/             # Page sections and page bodies
 │   └── hooks/                  # Client-side hooks (scroll reveal)
-├── public/                     # Static assets, .htaccess, api.php
-├── php/                        # Slim PHP API (waitlist subscription via Brevo)
-├── next.config.ts              # Next.js config (static export, dev /api proxy)
+├── src/app/api/                # Waitlist API: /api/subscribe and /api/health
+├── src/lib/                    # Server-only Brevo client and email templates
+├── public/                     # Static assets
+├── scripts/check-brevo.mjs     # Checks the Brevo setup from the server
+├── Dockerfile, docker-compose.yml, Caddyfile
+├── next.config.ts              # Next.js config (standalone server, security headers)
 ├── tailwind.config.js          # Tailwind configuration with custom theme
 └── package.json                # Dependencies and scripts
 ```
@@ -63,12 +66,12 @@ npm run dev
 
 3. Open your browser and visit `http://localhost:3000`
 
-During development, requests to `/api/*` are proxied to the PHP API at `http://localhost:8080` (e.g. `php -S localhost:8080 -t public`). To call an API on another origin, set `NEXT_PUBLIC_API_URL`.
+To test the waitlist form locally, copy `.env.example` to `.env.local` and fill in the Brevo settings; `npm run dev` picks them up.
 
 ## Available Scripts
 
 - `npm run dev` - Start the Next.js development server
-- `npm run build` - Build and export the static site to `out/`
+- `npm run build` - Build the production server into `.next/standalone`
 - `npm run lint` - Run ESLint for code quality
 
 ## Components Overview
@@ -138,26 +141,35 @@ The site is statically exported (`output: "export"`) to the `out` directory, rea
 
 ## Waitlist API (Brevo)
 
-Signups go to `/api/subscribe`, a small PHP API in `php/` that adds the email to a Brevo contact list and emails the team a notification. The Brevo API key only lives on the server in `php/.env`; it is never sent to the browser.
+Signups go to `/api/subscribe`, a Next.js route handler that adds the email to a Brevo contact list and emails the team a notification. The Brevo settings are server-side environment variables (see `.env.example`); none of them reach the browser.
 
-1. `cd php && composer install --no-dev`
-2. `cp .env.example .env` and fill it in (the comments explain each value):
-   - `BREVO_API_KEY`: an **API v3 key** (`xkeysib-…`), not an SMTP key
-   - `EMAIL_FROM`: a sender verified in Brevo
-   - If Brevo's *Authorised IPs* protection is on, add the server's IP
-3. Check everything from the server: `php bin/check-brevo.php --send-test`
+- `BREVO_API_KEY` must be an **API v3 key** (`xkeysib-…`), not an SMTP key
+- `EMAIL_FROM` must be a sender verified in Brevo
+- If Brevo's *Authorised IPs* protection is on, add the server's public IP
 
-Failures are written to the PHP error log with a `[quikku]` prefix and a hint on how to fix them.
+Failures are logged to the container output with a `[quikku]` prefix and a hint on how to fix them (`docker compose logs web`).
 
-## Deployment
+## Deployment (Docker)
 
-Upload the contents of `out/` to the Apache document root, with the `php/` directory beside it (run `composer install` in `php/`). The bundled `.htaccess` routes `/api/*` to the PHP API, serves pages without the `.html` extension (`/terms` → `terms.html`) and uses `404.html` for unknown URLs.
+On the server, from the project folder:
 
-The `out/` folder can also be hosted on any static host (Vercel, Netlify, S3 + CloudFront, ...) as long as the `/api` endpoint is provided separately.
+```bash
+cp .env.example .env        # fill in the Brevo settings
+docker compose up -d --build
+docker compose exec web node scripts/check-brevo.mjs --send-test
+```
+
+The site listens on `127.0.0.1:3000`. Point your reverse proxy (nginx, Traefik, ...) at it, or start the bundled Caddy, which serves `quikkupay.com` / `www.quikkupay.com` with automatic HTTPS (DNS must point at the server and ports 80/443 must be open):
+
+```bash
+docker compose --profile proxy up -d --build
+```
+
+To update: `git pull && docker compose up -d --build`. The container restarts automatically and exposes a health check at `/api/health`.
 
 ## Technologies Used
 
-- Next.js 16 (App Router, static export)
+- Next.js 16 (App Router, standalone server)
 - React 19
 - TypeScript
 - Tailwind CSS

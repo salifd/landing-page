@@ -17,5 +17,5 @@ export default defineConfig([
     files: ["*.config.js"],
     rules: { "import/no-anonymous-default-export": "off" },
   },
-  globalIgnores([".next/**", "out/**", "next-env.d.ts", "php/**"]),
+  globalIgnores([".next/**", "next-env.d.ts"]),
 ]);

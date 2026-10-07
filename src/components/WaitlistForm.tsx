@@ -4,8 +4,6 @@ import React, { useEffect, useId, useRef, useState, type FormEvent } from "react
 import { Check, Loader2 } from "lucide-react";
 import { ArrowLabel, primaryButtonClass } from "./brand";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
-
 const validateEmail = (email: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -43,7 +41,7 @@ const WaitlistForm: React.FC<{ id?: string }> = ({ id }) => {
     setMessage("");
 
     try {
-      const response = await fetch(`${API_URL}/api/subscribe`, {
+      const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

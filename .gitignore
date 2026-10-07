@@ -24,20 +24,14 @@ dist-ssr
 *.sw?
 
 .DS_Store
-.env
 .claude/
 
-# PHP config (contains sensitive keys)
-api/config.php
-public/config.php
-config.php
-
-# PHP dependencies and environment
-php/vendor/
-php/.env
+# Secrets: only the example is committed
+.env
+.env.*
+!.env.example
 
 # Next.js
 .next/
-out/
 next-env.d.ts
 *.tsbuildinfo

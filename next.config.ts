@@ -1,22 +1,27 @@
 import type { NextConfig } from "next";
 
-const isDev = process.env.NODE_ENV === "development";
-
 const nextConfig: NextConfig = {
-  // Production builds are exported as static HTML to `out/`, served by Apache
-  // alongside the PHP API (see public/.htaccess).
-  output: isDev ? undefined : "export",
+  // Self-contained server in .next/standalone, packaged by the Dockerfile
+  output: "standalone",
   images: { unoptimized: true },
-  // Remove console logs in production builds
+  poweredByHeader: false,
   compiler: {
-    removeConsole: !isDev,
+    // Strip console.log noise in production but keep server-side error logs
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
   },
-  // Proxy /api to the local PHP server during development
-  ...(isDev && {
-    async rewrites() {
-      return [{ source: "/api/:path*", destination: "http://localhost:8080/api/:path*" }];
-    },
-  }),
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
