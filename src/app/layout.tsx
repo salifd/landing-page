@@ -2,30 +2,25 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import MatomoPageView from "@/components/MatomoPageView";
 import MotionController from "@/components/MotionController";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL, socialMetadata, STRUCTURED_DATA } from "@/lib/seo";
 import "./globals.css";
-
-const SITE_URL = "https://www.quikkupay.com";
-const TITLE = "Quikku - The Future of Payment for Travellers";
-const SHARE_DESCRIPTION =
-  "Reimagining how the world moves. Join us on our journey to design innovative payment solutions for global travelers.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: TITLE,
-  description:
-    "Reimagining how the world moves. Join us on our journey to design innovative payment solutions for global travelers. Be the first to embark with Quikku.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   keywords: [
-    "travel payment",
-    "digital payment",
-    "international payment",
+    "QR code payment",
+    "Southeast Asia travel payment",
+    "tourist payment app",
+    "Visa Mastercard QR",
+    "Thailand payment",
+    "Vietnam payment",
+    "Cambodia payment",
     "travel fintech",
-    "global mobility",
-    "traveler payment solutions",
-    "payment innovation",
-    "cross-border payments",
-    "travel finance",
-    "seamless payments",
+    "international payment",
     "Quikku",
+    "Quikku Pay",
   ],
   authors: [{ name: "Quikku" }],
   robots: { index: true, follow: true },
@@ -33,82 +28,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
     ],
     shortcut: "/favicon.ico",
     apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
   manifest: "/site.webmanifest",
-  openGraph: {
-    type: "website",
-    url: "/",
-    title: TITLE,
-    description: SHARE_DESCRIPTION,
-    images: [
-      {
-        url: "/assets/images/illustration_2.webp",
-        width: 1200,
-        height: 630,
-        alt: "Quikku - Travel Payment Innovation",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: SHARE_DESCRIPTION,
-    images: ["/assets/images/illustration_2.webp"],
-  },
-  other: {
-    language: "English",
-    "revisit-after": "7 days",
-  },
+  ...socialMetadata({ title: SITE_TITLE, description: SITE_DESCRIPTION, path: "/" }),
 };
 
 export const viewport: Viewport = {
   themeColor: "#0a2472",
 };
-
-const structuredData = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Quikku",
-    alternateName: "QuikkuPay",
-    url: SITE_URL,
-    logo: `${SITE_URL}/favicon.svg`,
-    description:
-      "Innovative payment solutions for global travelers. Reimagining how the world moves with seamless cross-border payments.",
-    foundingDate: "2025",
-    sameAs: ["https://twitter.com/quikkupay", "https://www.linkedin.com/company/quikku"],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "Customer Support",
-      email: "support@quikkupay.com",
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Quikku",
-    url: SITE_URL,
-    description: "The Future of Payment for Travellers",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/?s={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: "Payment Processing",
-    provider: { "@type": "Organization", name: "Quikku" },
-    areaServed: "Worldwide",
-    audience: { "@type": "Audience", audienceType: "International Travelers" },
-    category: "Financial Technology",
-  },
-];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -125,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
 
-        {structuredData.map((data) => (
+        {STRUCTURED_DATA.map((data) => (
           <script
             key={data["@type"]}
             type="application/ld+json"
