@@ -132,6 +132,45 @@
   box-shadow: 0 8px 20px -6px rgba(0, 13, 46, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
+/* Hero payment loop: a photo is scanned, bumps as "paid", and its price tag pops in */
+.mosaic-photo {
+  outline: 1.5px solid rgba(255, 255, 255, 0.15);
+  outline-offset: -1.5px;
+  transition: scale 0.5s var(--ease-out), outline-color 0.3s, outline-offset 0.3s;
+}
+.mosaic-photo[data-state='scan'] {
+  outline: 0.42cqw solid #a6e1fa;
+  outline-offset: 0.42cqw;
+  scale: 0.96;
+}
+.mosaic-photo[data-state='paid'] {
+  scale: 1.05;
+}
+@keyframes scan-beam {
+  from { top: 8%; }
+  to { top: 88%; }
+}
+.scan-beam {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 8%;
+  height: 3.5%;
+  border-radius: 9999px;
+  background: #ff5c5c;
+  box-shadow: 0 0 18px 4px rgba(255, 92, 92, 0.8);
+  animation: scan-beam 1.3s ease-in-out forwards;
+}
+[data-paid-tag] {
+  transition: opacity 0.25s, scale 0.45s var(--ease-spring), translate 0.45s var(--ease-spring);
+}
+/* Hidden until the loop shows them; without JS every tag stays visible */
+.js [data-paid-tag]:not([data-on]) {
+  opacity: 0;
+  scale: 0.5;
+  translate: 0 8px;
+}
+
 /* ------------------------------------------------------------------ */
 /* Legal pages                                                         */
 /* ------------------------------------------------------------------ */
@@ -232,7 +271,13 @@
     animation: none;
   }
   .animate-shake,
-  .animate-pop-in {
+  .animate-pop-in,
+  .scan-beam {
     animation: none;
+  }
+  .js [data-paid-tag]:not([data-on]) {
+    opacity: 1;
+    scale: none;
+    translate: none;
   }
 }

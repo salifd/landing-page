@@ -6,10 +6,11 @@ import { delay } from "./motion";
 
 export const ASSETS = {
   logo: "/assets/redesign/logo-quikku-white.svg",
+  photoCourt: "/assets/redesign/photo-court.jpg",
+  photoPay: "/assets/redesign/photo-pay.jpg",
+  photoStall: "/assets/redesign/photo-stall.jpg",
   photoHan: "/assets/redesign/photo-han.jpg",
-  photoMnl: "/assets/redesign/photo-mnl.jpg",
-  photoVn1: "/assets/redesign/photo-vn1.jpg",
-  photoVn2: "/assets/redesign/photo-vn2.jpg",
+  photoFloat: "/assets/redesign/photo-float.jpg",
   photoBkk: "/assets/redesign/photo-bkk.jpg",
   photoX1: "/assets/redesign/photo-x1.jpg",
   ticketTha: "/assets/redesign/ticket-tha.png",
