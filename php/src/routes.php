@@ -20,7 +20,7 @@ return function (App $app, array $settings) {
 
     $app->post('/subscribe', function (Request $request, Response $response) use ($settings) {
         $body = $request->getParsedBody();
-        $email = $body['email'] ?? '';
+        $email = is_array($body) && is_string($body['email'] ?? null) ? trim($body['email']) : '';
 
         if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $response->getBody()->write(json_encode([
@@ -33,49 +33,34 @@ return function (App $app, array $settings) {
         }
 
         $brevo = new BrevoService($settings);
+        $json = function (array $data, int $status = 200) use ($response) {
+            $response->getBody()->write(json_encode($data));
+            return $response->withHeader('Content-Type', 'application/json')->withStatus($status);
+        };
 
         try {
-            $result = $brevo->addContact($email);
+            $contact = $brevo->addContact($email);
 
-            if ($result['success'] || $result['httpCode'] === 409) {
-                $brevo->sendNotification(
-                    'New Waitlist Subscription - Quikku',
-                    EmailTemplates::success($email)
-                );
+            if ($contact['ok']) {
+                // A failed notification is logged by BrevoService and must not fail the signup
+                $brevo->sendNotification('New Waitlist Subscription - Quikku', EmailTemplates::success($email));
 
-                $response->getBody()->write(json_encode([
-                    'success' => true,
-                    'message' => 'Successfully subscribed to the waitlist',
-                ]));
-                return $response->withHeader('Content-Type', 'application/json');
+                return $json(['success' => true, 'message' => 'Successfully subscribed to the waitlist']);
             }
 
-            $errorDetails = "HTTP {$result['httpCode']}: {$result['response']}";
-            $brevo->sendNotification(
-                'Failed Waitlist Subscription - Quikku',
-                EmailTemplates::failure($email, $errorDetails)
-            );
+            // With a rejected API key the alert email would be rejected too; the log has the details
+            if ($contact['status'] !== 401) {
+                $brevo->sendNotification(
+                    'Failed Waitlist Subscription - Quikku',
+                    EmailTemplates::failure($email, BrevoService::describe($contact))
+                );
+            }
 
-            $response->getBody()->write(json_encode([
-                'success' => false,
-                'error' => 'Failed to subscribe. Please try again later.',
-            ]));
-            return $response
-                ->withHeader('Content-Type', 'application/json')
-                ->withStatus(500);
-        } catch (\Exception $e) {
-            $brevo->sendNotification(
-                'Failed Waitlist Subscription - Quikku',
-                EmailTemplates::failure($email, $e->getMessage())
-            );
+            return $json(['success' => false, 'error' => 'Failed to subscribe. Please try again later.'], 500);
+        } catch (\Throwable $e) {
+            error_log('[quikku] Subscribe error: ' . $e->getMessage());
 
-            $response->getBody()->write(json_encode([
-                'success' => false,
-                'error' => 'An error occurred. Please try again later.',
-            ]));
-            return $response
-                ->withHeader('Content-Type', 'application/json')
-                ->withStatus(500);
+            return $json(['success' => false, 'error' => 'An error occurred. Please try again later.'], 500);
         }
     });
 };

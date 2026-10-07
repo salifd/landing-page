@@ -5,7 +5,16 @@ declare(strict_types=1);
 use Slim\Factory\AppFactory;
 use Quikku\Middleware\CorsMiddleware;
 
-$settings = require __DIR__ . '/settings.php';
+try {
+    $settings = require __DIR__ . '/settings.php';
+} catch (\Throwable $e) {
+    // Misconfiguration: log the real reason, answer the form with JSON it can read
+    error_log('[quikku] Configuration error: ' . $e->getMessage());
+    http_response_code(500);
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'error' => 'Server not configured']);
+    exit;
+}
 
 $app = AppFactory::create();
 
@@ -23,6 +32,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     bool $logErrors,
     bool $logErrorDetails
 ) use ($app) {
+    error_log('[quikku] Unhandled error: ' . $exception->getMessage());
     $response = $app->getResponseFactory()->createResponse();
     $response->getBody()->write(json_encode([
         'success' => false,

@@ -124,7 +124,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..600&family=Poppins:wght@600;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="preconnect" href="https://api.brevo.com" />
 
         {structuredData.map((data) => (
           <script

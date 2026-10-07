@@ -136,6 +136,19 @@ npm run build
 
 The site is statically exported (`output: "export"`) to the `out` directory, ready for deployment.
 
+## Waitlist API (Brevo)
+
+Signups go to `/api/subscribe`, a small PHP API in `php/` that adds the email to a Brevo contact list and emails the team a notification. The Brevo API key only lives on the server in `php/.env`; it is never sent to the browser.
+
+1. `cd php && composer install --no-dev`
+2. `cp .env.example .env` and fill it in (the comments explain each value):
+   - `BREVO_API_KEY`: an **API v3 key** (`xkeysib-…`), not an SMTP key
+   - `EMAIL_FROM`: a sender verified in Brevo
+   - If Brevo's *Authorised IPs* protection is on, add the server's IP
+3. Check everything from the server: `php bin/check-brevo.php --send-test`
+
+Failures are written to the PHP error log with a `[quikku]` prefix and a hint on how to fix them.
+
 ## Deployment
 
 Upload the contents of `out/` to the Apache document root, with the `php/` directory beside it (run `composer install` in `php/`). The bundled `.htaccess` routes `/api/*` to the PHP API, serves pages without the `.html` extension (`/terms` → `terms.html`) and uses `404.html` for unknown URLs.
