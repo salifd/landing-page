@@ -78,10 +78,10 @@ const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral" }> = ({ left, p
 );
 
 const QrMosaic: React.FC = () => (
-  // Wider than the viewport on small screens so the phone stays legible;
-  // the hero clips the overflowing edges.
+  // Wider than the viewport on small screens so the phone stays legible. The hero's
+  // flex centring keeps it centred (overflowing equally on both sides) and clips the edges.
   <div
-    className="relative left-1/2 -translate-x-1/2 [container-type:inline-size]"
+    className="relative shrink-0 [container-type:inline-size]"
     style={{ width: "min(1184px, max(680px, 100% - 40px))" }}
     role="img"
     data-reveal-group
