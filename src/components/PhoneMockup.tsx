@@ -1,5 +1,4 @@
 import React from "react";
-import { ASSETS } from "./brand";
 
 // "Confirm payment" screen from the design, drawn on a 264px-wide artboard.
 // Every length is expressed in container query units so the phone scales
@@ -30,9 +29,10 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
       <p className="absolute font-display font-semibold leading-[normal]" style={{ left: p(16.12), top: p(10.75), fontSize: p(10.076) }}>
         9:41
       </p>
-      <div className="absolute" style={{ left: p(16.12), top: p(37.62), width: p(29.557), height: p(29.557) }}>
-        <img src={ASSETS.ellipseBack} alt="" className="absolute inset-0 block size-full max-w-none" />
-      </div>
+      <div
+        className="absolute rounded-full bg-white"
+        style={{ left: p(16.12), top: p(37.62), width: p(29.557), height: p(29.557) }}
+      />
       <p
         className="absolute -translate-x-1/2 text-center font-display font-semibold leading-[normal]"
         style={{ left: p(30.9), top: p(43.66), width: p(29.557), fontSize: p(13.435) }}
@@ -51,7 +51,7 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
         className="absolute flex items-center bg-white"
         style={{ left: p(16.12), top: p(110.17), width: p(231.756), padding: p(9.405), gap: p(8.061), borderRadius: p(12.092) }}
       >
-        <img src={ASSETS.ellipseMerchant} alt="" className="block shrink-0" style={{ width: p(29.557), height: p(29.557) }} />
+        <div className="shrink-0 rounded-full bg-sky" style={{ width: p(29.557), height: p(29.557) }} />
         <div className="flex min-w-0 flex-1 flex-col items-start leading-[normal]" style={{ gap: p(2.687) }}>
           <div className="flex items-center" style={{ gap: p(5.374) }}>
             <span className="whitespace-nowrap font-semibold" style={{ fontSize: p(10.076) }}>
@@ -134,7 +134,7 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
       </div>
 
       <div className="absolute flex items-center" style={{ left: p(16.12), top: p(456.79), gap: p(5.374) }}>
-        <img src={ASSETS.ellipseDot} alt="" className="block shrink-0" style={{ width: p(5.374), height: p(5.374) }} />
+        <div className="shrink-0 rounded-full bg-coral" style={{ width: p(5.374), height: p(5.374) }} />
         <span className="whitespace-nowrap leading-[normal] text-stone" style={{ fontSize: p(8.061) }}>
           Rate locked for 00:58
         </span>

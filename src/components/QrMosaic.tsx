@@ -1,4 +1,5 @@
 import React from "react";
+import { Check } from "lucide-react";
 import { ASSETS } from "./brand";
 import PhoneMockup from "./PhoneMockup";
 
@@ -113,7 +114,7 @@ const QrMosaic: React.FC = () => (
             className="flex shrink-0 items-center justify-center rounded-full bg-deep-blue"
             style={{ width: m(20), height: m(20) }}
           >
-            <img src={ASSETS.check} alt="" className="block" style={{ width: m(12), height: m(12) }} />
+            <Check strokeWidth={3} className="block text-white" style={{ width: m(12), height: m(12) }} />
           </div>
           <span className="whitespace-nowrap font-semibold leading-[normal] text-deep-blue" style={{ fontSize: m(13) }}>
             {label}

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useId, useState } from "react";
-import { ASSETS, Eyebrow } from "./brand";
+import { Plus } from "lucide-react";
+import { Eyebrow } from "./brand";
 
 const FAQS = [
   {
@@ -37,13 +38,7 @@ const FaqItem: React.FC<{ q: string; a: string }> = ({ q, a }) => {
         >
           <span className="min-w-0 flex-1 font-display text-xl font-semibold leading-[1.35] md:text-[22px]">{q}</span>
           <span className="flex size-9 shrink-0 items-center justify-center rounded-[10px] bg-sky">
-            <img
-              src={ASSETS.plus}
-              alt=""
-              width={18}
-              height={18}
-              className="size-[18px]"
-            />
+            <Plus aria-hidden="true" strokeWidth={2.5} className="size-[18px] text-deep-blue" />
           </span>
         </button>
       </h3>

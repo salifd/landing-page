@@ -1,15 +1,10 @@
 import React from "react";
+import { ArrowRight } from "lucide-react";
 
 // Shared building blocks of the Quikku brand design system.
 
 export const ASSETS = {
   logo: "/assets/redesign/logo-quikku-white.svg",
-  arrow: "/assets/redesign/icon-arrow.svg",
-  check: "/assets/redesign/icon-check.svg",
-  plus: "/assets/redesign/icon-plus.svg",
-  ellipseBack: "/assets/redesign/ellipse-back.svg",
-  ellipseMerchant: "/assets/redesign/ellipse-merchant.svg",
-  ellipseDot: "/assets/redesign/ellipse-dot.svg",
   photoHan: "/assets/redesign/photo-han.png",
   photoMnl: "/assets/redesign/photo-mnl.png",
   photoVn1: "/assets/redesign/photo-vn1.png",
@@ -71,7 +66,7 @@ export const SectionHeading: React.FC<{
 export const ArrowLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <>
     <span className="font-display text-base font-semibold leading-[normal] text-white">{children}</span>
-    <img src={ASSETS.arrow} alt="" width={20} height={20} className="size-5 shrink-0" />
+    <ArrowRight aria-hidden="true" strokeWidth={2.5} className="size-5 shrink-0 text-white" />
   </>
 );
 
