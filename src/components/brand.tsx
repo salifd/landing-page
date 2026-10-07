@@ -6,12 +6,12 @@ import { delay } from "./motion";
 
 export const ASSETS = {
   logo: "/assets/redesign/logo-quikku-white.svg",
-  photoHan: "/assets/redesign/photo-han.png",
-  photoMnl: "/assets/redesign/photo-mnl.png",
-  photoVn1: "/assets/redesign/photo-vn1.png",
-  photoVn2: "/assets/redesign/photo-vn2.png",
-  photoBkk: "/assets/redesign/photo-bkk.png",
-  photoX1: "/assets/redesign/photo-x1.png",
+  photoHan: "/assets/redesign/photo-han.jpg",
+  photoMnl: "/assets/redesign/photo-mnl.jpg",
+  photoVn1: "/assets/redesign/photo-vn1.jpg",
+  photoVn2: "/assets/redesign/photo-vn2.jpg",
+  photoBkk: "/assets/redesign/photo-bkk.jpg",
+  photoX1: "/assets/redesign/photo-x1.jpg",
   ticketTha: "/assets/redesign/ticket-tha.png",
   ticketVnm: "/assets/redesign/ticket-vnm.png",
   ticketPhl: "/assets/redesign/ticket-phl.png",
@@ -85,7 +85,7 @@ export const ArrowLabel: React.FC<{ children: React.ReactNode; compact?: boolean
 );
 
 const buttonBase =
-  "group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-coral shadow-[0_8px_24px_-12px_rgba(255,92,92,0.7)] transition-[background-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#f04848] hover:shadow-[0_14px_32px_-12px_rgba(255,92,92,0.85)] active:translate-y-0 active:scale-[0.97] focus:outline-none focus-visible:ring-4 focus-visible:ring-sky/60 disabled:pointer-events-none";
+  "group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-coral shadow-[0_10px_24px_-8px_rgba(255,92,92,0.7),inset_0_1px_0_rgba(255,255,255,0.35)] transition-[background-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#f04848] hover:shadow-[0_16px_30px_-8px_rgba(255,92,92,0.8),inset_0_1px_0_rgba(255,255,255,0.35)] active:translate-y-0 active:scale-[0.97] focus:outline-none focus-visible:ring-4 focus-visible:ring-sky/60 disabled:pointer-events-none";
 
 export const primaryButtonClass = `${buttonBase} px-7 py-4`;
 export const compactButtonClass = `${buttonBase} px-4 py-2.5 md:px-7 md:py-4`;

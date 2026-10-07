@@ -91,8 +91,8 @@ const WaitlistForm: React.FC<{ id?: string }> = ({ id }) => {
           aria-invalid={status === "error"}
           aria-describedby={message ? messageId : undefined}
           disabled={status === "loading"}
-          className={`w-full rounded-full bg-white px-6 py-4 text-base leading-[normal] text-deep-blue shadow-[inset_0_0_0_2px_transparent] transition-shadow duration-300 placeholder:text-deep-blue/70 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky/60 sm:w-[340px] ${
-            status === "error" ? "shadow-[inset_0_0_0_2px_#ffd34d]" : ""
+          className={`w-full rounded-full bg-white px-6 py-4 text-base leading-[normal] text-deep-blue shadow-[inset_0_0_0_2px_transparent,0_10px_30px_-12px_rgba(0,13,46,0.6)] transition-shadow duration-300 placeholder:text-deep-blue/70 focus:outline-none focus-visible:ring-4 focus-visible:ring-sky/60 sm:w-[340px] ${
+            status === "error" ? "shadow-[inset_0_0_0_2px_#ffd34d,0_10px_30px_-12px_rgba(0,13,46,0.6)]" : ""
           }`}
         />
         <button

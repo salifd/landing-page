@@ -25,7 +25,7 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
 }) => (
   <div
     data-reveal="rise"
-    className="absolute overflow-hidden border-solid border-midnight bg-cream shadow-[0_40px_80px_-30px_rgba(0,8,40,0.8)]"
+    className="phone-float absolute overflow-hidden border-solid border-midnight bg-cream shadow-[0_0_0_1px_rgba(166,225,250,0.3),0_40px_80px_-24px_rgba(0,8,30,0.75)]"
     style={delay(520, frameStyle)}
   >
     <div

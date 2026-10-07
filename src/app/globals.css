@@ -7,6 +7,16 @@
     @apply antialiased;
   }
 
+  :root {
+    /* Height of the floating site header; page tops pad by this much */
+    --header-h: 74px;
+  }
+  @media (min-width: 768px) {
+    :root {
+      --header-h: 112px;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
     /* Keep anchored sections clear of the sticky header */
@@ -93,6 +103,62 @@
   translate: none;
   scale: none;
   rotate: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero backdrop and liquid glass                                      */
+/* ------------------------------------------------------------------ */
+
+.hero-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  will-change: transform;
+}
+@keyframes glow-drift {
+  from { transform: translate3d(-4%, -3%, 0) scale(1); }
+  to { transform: translate3d(5%, 4%, 0) scale(1.12); }
+}
+.animate-glow-drift {
+  animation: glow-drift 14s ease-in-out infinite alternate;
+}
+.animate-glow-drift-reverse {
+  animation: glow-drift 18s ease-in-out infinite alternate-reverse;
+}
+
+/* Module texture: visible at the sides, fading towards the centre and down */
+.hero-texture {
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 30%, transparent 70%, #000 100%),
+    linear-gradient(180deg, #000, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 30%, transparent 70%, #000 100%),
+    linear-gradient(180deg, #000, transparent);
+  mask-composite: intersect;
+}
+
+/* Translucent "liquid glass" tile */
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+/* Solid colour tile with depth: soft drop shadow and a lit top edge */
+.solid-tile {
+  box-shadow: 0 8px 20px -6px rgba(0, 13, 46, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Hero phone: rises in, then floats gently */
+@keyframes phone-float {
+  50% { translate: 0 -1.2%; }
+}
+.phone-float {
+  animation: phone-float 6s ease-in-out 1.9s infinite;
+}
+.js [data-hero] [data-reveal].phone-float {
+  animation: reveal-rise 1.2s var(--ease-out) var(--reveal-delay, 0ms) both,
+    phone-float 6s ease-in-out 1.9s infinite;
 }
 
 /* ------------------------------------------------------------------ */
@@ -241,6 +307,10 @@ html:not(.js) [data-faq-panel] {
   }
   .animate-blink,
   .animate-bob,
+  .animate-glow-drift,
+  .animate-glow-drift-reverse,
+  .phone-float,
+  .js [data-hero] [data-reveal].phone-float,
   .animate-drift,
   .animate-ping-soft,
   .animate-shake,

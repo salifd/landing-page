@@ -5,6 +5,7 @@ import { Eyebrow } from "../brand";
 import { delay } from "../motion";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
+import HeroBackdrop from "../HeroBackdrop";
 import LegalToc, { type TocItem } from "./LegalToc";
 
 export type LegalSection = { id: string; title: string; body: React.ReactNode };
@@ -30,11 +31,15 @@ const LegalPage: React.FC<Props> = ({ title, updated, current, sections }) => {
 
       <main>
         {/* Title band */}
-        <section data-hero className="relative overflow-hidden bg-deep-blue pb-16 pt-10 md:pb-24 md:pt-16">
+        <section
+          data-hero
+          className="relative isolate overflow-hidden pb-16 pt-[calc(var(--header-h)+2.5rem)] md:pb-24 md:pt-[calc(var(--header-h)+4rem)]"
+        >
+          <HeroBackdrop />
           {/* Finder-eye motif, echoing the landing page */}
           <div
             aria-hidden="true"
-            className="absolute -right-24 -top-16 hidden size-[340px] items-center justify-center rounded-[85px] border-[38px] border-sky/90 md:flex lg:right-[6%]"
+            className="absolute -right-24 top-[calc(var(--header-h)+0.5rem)] hidden size-[340px] items-center justify-center rounded-[85px] border-[38px] border-sky/90 drop-shadow-[0_0_28px_rgba(166,225,250,0.35)] md:flex lg:right-[6%]"
           >
             <div
               className="size-[136px] animate-blink rounded-[38px] bg-coral"

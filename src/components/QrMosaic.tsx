@@ -10,11 +10,11 @@ const m = (px: number) => `${(px / 11.84).toFixed(3)}cqw`;
 
 type Tone = "sky" | "white" | "coral" | "sun";
 const toneClass: Record<Tone, string> = {
-  sky: "bg-sky",
-  // "White" modules sit at 10% opacity in the design
-  white: "bg-white/10",
-  coral: "bg-coral",
-  sun: "bg-sun",
+  sky: "solid-tile bg-sky",
+  // The design's translucent white modules, rendered as liquid glass
+  white: "glass",
+  coral: "solid-tile bg-coral",
+  sun: "solid-tile bg-sun",
 };
 
 const PHOTOS: [string, number, number][] = [
@@ -64,7 +64,7 @@ const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral"; blinkDelay: st
 }) => (
   <div
     data-reveal="pop"
-    className="absolute flex items-center justify-center border-solid border-sky"
+    className="absolute flex items-center justify-center border-solid border-sky drop-shadow-[0_0_28px_rgba(166,225,250,0.35)]"
     style={delay(rippleDelay(left, 0, 264), {
       left: m(left),
       top: 0,
@@ -115,7 +115,7 @@ const QrMosaic: React.FC = () => (
           width={172}
           height={172}
           data-reveal="pop"
-          className="absolute max-w-none object-cover"
+          className="absolute max-w-none object-cover shadow-[0_16px_36px_-10px_rgba(0,13,46,0.7)] outline outline-[1.5px] -outline-offset-[1.5px] outline-white/15"
           style={delay(rippleDelay(left, top, 172), {
             left: m(left),
             top: m(top),

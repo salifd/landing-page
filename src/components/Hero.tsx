@@ -1,4 +1,5 @@
 import React from "react";
+import HeroBackdrop from "./HeroBackdrop";
 import QrMosaic from "./QrMosaic";
 import WaitlistForm from "./WaitlistForm";
 import { delay } from "./motion";
@@ -10,15 +11,16 @@ const HEADLINE: { word: string; accent?: boolean }[] = [
 ];
 
 const Hero: React.FC = () => (
-  <section
-    data-hero
-    className="relative flex w-full flex-col items-center overflow-hidden bg-deep-blue pb-14 md:pb-[88px]"
-  >
+  <section data-hero className="relative isolate flex w-full flex-col items-center overflow-hidden pb-14 md:pb-[88px]">
+    <HeroBackdrop />
     <div
       id="main-content"
-      className="page-container flex flex-col items-center gap-6 pb-12 pt-6 text-center md:pb-[72px] md:pt-14"
+      className="page-container flex flex-col items-center gap-6 pb-12 pt-[calc(var(--header-h)+1.5rem)] text-center md:pb-[72px] md:pt-[calc(var(--header-h)+3.5rem)]"
     >
-      <div data-reveal="up" className="flex items-center gap-2.5 rounded-full border border-sky py-2 pl-3 pr-4">
+      <div
+        data-reveal="up"
+        className="flex items-center gap-2.5 rounded-full border border-sky/40 bg-sky/[0.06] py-2 pl-3 pr-4 backdrop-blur-md"
+      >
         <span className="relative flex size-2.5 shrink-0">
           <span className="absolute inset-0 animate-ping-soft rounded-[3px] bg-coral" />
           <span className="relative size-2.5 rounded-[3px] bg-coral" />

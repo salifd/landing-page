@@ -33,10 +33,11 @@ const SiteHeader: React.FC = () => {
         Skip to main content
       </a>
       <header
-        className={`sticky top-0 z-50 w-full transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
+        // Floats over the page: transparent on top of the hero, frosted glass once scrolled
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
           scrolled
-            ? "bg-deep-blue/85 shadow-[0_1px_0_rgba(166,225,250,0.12),0_12px_32px_-16px_rgba(0,28,85,0.8)] backdrop-blur-md"
-            : "bg-deep-blue"
+            ? "bg-deep-blue/70 shadow-[0_1px_0_rgba(166,225,250,0.12),0_12px_32px_-16px_rgba(0,28,85,0.8)] backdrop-blur-xl backdrop-saturate-150"
+            : "bg-transparent"
         }`}
       >
         <div
