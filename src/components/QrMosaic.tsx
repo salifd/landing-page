@@ -57,11 +57,7 @@ const PAID_TAGS: [string, number, number][] = [
   ["Turon · PHP 30", -20, 420],
 ];
 
-const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral"; blinkDelay: string }> = ({
-  left,
-  pupil,
-  blinkDelay,
-}) => (
+const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral" }> = ({ left, pupil }) => (
   <div
     data-reveal="pop"
     className="absolute flex items-center justify-center border-solid border-sky"
@@ -75,8 +71,8 @@ const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral"; blinkDelay: st
     })}
   >
     <div
-      className={`animate-blink ${pupil === "sky" ? "bg-sky" : "bg-coral"}`}
-      style={{ width: m(106), height: m(106), borderRadius: m(29), ["--blink-delay" as string]: blinkDelay }}
+      className={pupil === "sky" ? "bg-sky" : "bg-coral"}
+      style={{ width: m(106), height: m(106), borderRadius: m(29) }}
     />
   </div>
 );
@@ -104,8 +100,8 @@ const QrMosaic: React.FC = () => (
         screenWidth={m(264)}
       />
 
-      <FinderEye left={0} pupil="sky" blinkDelay="2.2s" />
-      <FinderEye left={920} pupil="coral" blinkDelay="4.6s" />
+      <FinderEye left={0} pupil="sky" />
+      <FinderEye left={920} pupil="coral" />
 
       {PHOTOS.map(([src, left, top]) => (
         <img

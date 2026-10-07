@@ -10,10 +10,7 @@ const FinalCta: React.FC = () => (
       className="absolute -top-[70px] hidden size-[620px] items-center justify-center rounded-[155px] border-[68px] border-sky lg:flex"
       style={{ left: "max(860px, 50% + 180px)" }}
     >
-      <div
-        className="size-[248px] animate-blink rounded-[68px] bg-coral"
-        style={{ ["--blink-delay" as string]: "3s" }}
-      />
+      <div className="size-[248px] rounded-[68px] bg-coral" />
     </div>
 
     <div className="page-container relative flex flex-col items-start gap-8">

@@ -49,10 +49,7 @@ const SignStage: React.FC = () => (
             className="flex shrink-0 items-center justify-center border-solid border-deep-blue"
             style={{ width: s(56), height: s(56), borderWidth: s(6), borderRadius: s(14) }}
           >
-            <div
-              className="animate-blink bg-deep-blue"
-              style={{ width: s(22), height: s(22), borderRadius: s(6), ["--blink-delay" as string]: "1.4s" }}
-            />
+            <div className="bg-deep-blue" style={{ width: s(22), height: s(22), borderRadius: s(6) }} />
           </div>
           <p className="min-w-0 flex-1 font-medium leading-[1.4]" style={{ fontSize: s(16) }}>
             Scan to pay.

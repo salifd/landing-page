@@ -199,17 +199,6 @@
 .js [data-hero] [data-reveal='pop'] { animation-name: reveal-pop; animation-duration: 0.7s; animation-timing-function: var(--ease-spring); }
 .js [data-hero] [data-reveal='fade'] { animation-name: reveal-fade; animation-duration: 1.2s; }
 
-/* QR "eye" pupils blink every few seconds */
-@keyframes blink {
-  0%, 90%, 100% { scale: 1 1; }
-  93% { scale: 1 0.12; }
-  96% { scale: 1 1; }
-}
-.animate-blink {
-  animation: blink 6s var(--ease-out) infinite;
-  animation-delay: var(--blink-delay, 0s);
-}
-
 /* Nudge an invalid form field */
 @keyframes shake {
   0%, 100% { translate: 0 0; }
@@ -229,15 +218,6 @@
   animation: pop-in 0.5s var(--ease-spring) both;
 }
 
-/* Expanding ring behind live status dots */
-@keyframes ping-soft {
-  0% { scale: 1; opacity: 0.6; }
-  80%, 100% { scale: 2.6; opacity: 0; }
-}
-.animate-ping-soft {
-  animation: ping-soft 1.6s var(--ease-out) infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -251,11 +231,8 @@
     transition: none;
     animation: none;
   }
-  .animate-blink,
-  .animate-ping-soft,
   .animate-shake,
-  .animate-pop-in,
-  .animate-marquee {
+  .animate-pop-in {
     animation: none;
   }
 }

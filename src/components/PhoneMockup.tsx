@@ -163,10 +163,7 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
       </div>
 
       <div className="absolute flex items-center" style={{ left: p(16.12), top: p(456.79), gap: p(5.374) }}>
-        <span className="relative flex shrink-0" style={{ width: p(5.374), height: p(5.374) }}>
-          <span className="absolute inset-0 animate-ping-soft rounded-full bg-coral" />
-          <span className="relative size-full rounded-full bg-coral" />
-        </span>
+        <span className="shrink-0 rounded-full bg-coral" style={{ width: p(5.374), height: p(5.374) }} />
         <span className="whitespace-nowrap leading-[normal] text-stone" style={{ fontSize: p(8.061) }}>
           Rate locked for <RateLockCountdown />
         </span>
