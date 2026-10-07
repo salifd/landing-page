@@ -1,21 +1,27 @@
-import Header from "@/components/Header";
-import FirstSection from "@/components/FirstSection";
-import MarqueeSection from "@/components/MarqueeSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import SecondSection from "@/components/SecondSection";
-import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Ticker from "@/components/Ticker";
+import Story from "@/components/Story";
+import HowItWorks from "@/components/HowItWorks";
+import Destinations from "@/components/Destinations";
+import Features from "@/components/Features";
+import Faq from "@/components/Faq";
+import FinalCta from "@/components/FinalCta";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#000d2e]">
-      <Header />
-      <main id="main-content">
-        <FirstSection />
-        <MarqueeSection />
-        <FeaturesSection />
-        <SecondSection />
+    <div className="min-h-screen bg-cream">
+      <main>
+        <Hero />
+        <Ticker />
+        <Story />
+        <HowItWorks />
+        <Destinations />
+        <Features />
+        <Faq />
+        <FinalCta />
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
