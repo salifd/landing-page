@@ -17,17 +17,6 @@ const Hero: React.FC = () => (
       id="main-content"
       className="page-container flex flex-col items-center gap-6 pb-12 pt-[calc(var(--header-h)+1.5rem)] text-center md:pb-[72px] md:pt-[calc(var(--header-h)+3.5rem)]"
     >
-      <div
-        data-reveal="up"
-        className="flex items-center gap-2.5 rounded-full border border-sky/40 bg-sky/[0.06] py-2 pl-3 pr-4 backdrop-blur-md"
-      >
-        <span className="relative flex size-2.5 shrink-0">
-          <span className="absolute inset-0 animate-ping-soft rounded-[3px] bg-coral" />
-          <span className="relative size-2.5 rounded-[3px] bg-coral" />
-        </span>
-        <p className="text-sm font-semibold leading-[normal] text-sky">Launching in Thailand · Vietnam · Philippines</p>
-      </div>
-
       <h1 className="font-display text-[clamp(3.5rem,11vw,8rem)] font-bold leading-none tracking-[-0.04em] text-white">
         {HEADLINE.map(({ word, accent }, i) => (
           <React.Fragment key={word}>

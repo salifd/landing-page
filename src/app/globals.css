@@ -109,23 +109,6 @@
 /* Hero backdrop and liquid glass                                      */
 /* ------------------------------------------------------------------ */
 
-.hero-glow {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(60px);
-  will-change: transform;
-}
-@keyframes glow-drift {
-  from { transform: translate3d(-4%, -3%, 0) scale(1); }
-  to { transform: translate3d(5%, 4%, 0) scale(1.12); }
-}
-.animate-glow-drift {
-  animation: glow-drift 14s ease-in-out infinite alternate;
-}
-.animate-glow-drift-reverse {
-  animation: glow-drift 18s ease-in-out infinite alternate-reverse;
-}
-
 /* Module texture: visible at the sides, fading towards the centre and down */
 .hero-texture {
   -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 30%, transparent 70%, #000 100%),
@@ -147,18 +130,6 @@
 /* Solid colour tile with depth: soft drop shadow and a lit top edge */
 .solid-tile {
   box-shadow: 0 8px 20px -6px rgba(0, 13, 46, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-}
-
-/* Hero phone: rises in, then floats gently */
-@keyframes phone-float {
-  50% { translate: 0 -1.2%; }
-}
-.phone-float {
-  animation: phone-float 6s ease-in-out 1.9s infinite;
-}
-.js [data-hero] [data-reveal].phone-float {
-  animation: reveal-rise 1.2s var(--ease-out) var(--reveal-delay, 0ms) both,
-    phone-float 6s ease-in-out 1.9s infinite;
 }
 
 /* ------------------------------------------------------------------ */
@@ -228,12 +199,6 @@
 .js [data-hero] [data-reveal='pop'] { animation-name: reveal-pop; animation-duration: 0.7s; animation-timing-function: var(--ease-spring); }
 .js [data-hero] [data-reveal='fade'] { animation-name: reveal-fade; animation-duration: 1.2s; }
 
-/* Without JS the FAQ can't toggle, so show every answer */
-html:not(.js) [data-faq-panel] {
-  grid-template-rows: 1fr;
-  opacity: 1;
-}
-
 /* QR "eye" pupils blink every few seconds */
 @keyframes blink {
   0%, 90%, 100% { scale: 1 1; }
@@ -243,25 +208,6 @@ html:not(.js) [data-faq-panel] {
 .animate-blink {
   animation: blink 6s var(--ease-out) infinite;
   animation-delay: var(--blink-delay, 0s);
-}
-
-/* Gentle bob for the floating "paid" tags */
-@keyframes bob {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -8%; }
-}
-.animate-bob {
-  animation: bob 5s ease-in-out infinite;
-  animation-delay: var(--bob-delay, 0s);
-}
-
-/* Slow drift for the giant finder eye */
-@keyframes drift {
-  0%, 100% { translate: 0 0; rotate: 0deg; }
-  50% { translate: -18px 22px; rotate: -3deg; }
-}
-.animate-drift {
-  animation: drift 14s ease-in-out infinite;
 }
 
 /* Nudge an invalid form field */
@@ -306,12 +252,6 @@ html:not(.js) [data-faq-panel] {
     animation: none;
   }
   .animate-blink,
-  .animate-bob,
-  .animate-glow-drift,
-  .animate-glow-drift-reverse,
-  .phone-float,
-  .js [data-hero] [data-reveal].phone-float,
-  .animate-drift,
   .animate-ping-soft,
   .animate-shake,
   .animate-pop-in,

@@ -64,7 +64,7 @@ const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral"; blinkDelay: st
 }) => (
   <div
     data-reveal="pop"
-    className="absolute flex items-center justify-center border-solid border-sky drop-shadow-[0_0_28px_rgba(166,225,250,0.35)]"
+    className="absolute flex items-center justify-center border-solid border-sky"
     style={delay(rippleDelay(left, 0, 264), {
       left: m(left),
       top: 0,
@@ -142,7 +142,7 @@ const QrMosaic: React.FC = () => (
       ))}
 
       {PAID_TAGS.map(([label, left, top], i) => (
-        // Outer element pops in; inner pill bobs (two separate animations)
+        // Outer element pops in; inner element is the pill
         <div
           key={label}
           data-reveal="pop"
@@ -150,11 +150,10 @@ const QrMosaic: React.FC = () => (
           style={delay(1450 + i * 200, { left: m(left), top: m(top) })}
         >
           <div
-            className="flex animate-bob items-center rounded-full bg-white shadow-[0_10px_30px_-12px_rgba(0,28,85,0.6)]"
+            className="flex items-center rounded-full bg-white shadow-[0_10px_30px_-12px_rgba(0,28,85,0.6)]"
             style={{
               gap: m(8),
               padding: `${m(8)} ${m(14)} ${m(8)} ${m(10)}`,
-              ["--bob-delay" as string]: `${-i * 1.7}s`,
             }}
           >
             <div

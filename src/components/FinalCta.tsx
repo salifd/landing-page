@@ -7,7 +7,7 @@ const FinalCta: React.FC = () => (
     {/* Giant finder eye, anchored 900px into the 1440px design frame */}
     <div
       aria-hidden="true"
-      className="absolute -top-[70px] hidden size-[620px] animate-drift items-center justify-center rounded-[155px] border-[68px] border-sky lg:flex"
+      className="absolute -top-[70px] hidden size-[620px] items-center justify-center rounded-[155px] border-[68px] border-sky lg:flex"
       style={{ left: "max(860px, 50% + 180px)" }}
     >
       <div

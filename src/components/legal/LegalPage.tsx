@@ -36,16 +36,6 @@ const LegalPage: React.FC<Props> = ({ title, updated, current, sections }) => {
           className="relative isolate overflow-hidden pb-16 pt-[calc(var(--header-h)+2.5rem)] md:pb-24 md:pt-[calc(var(--header-h)+4rem)]"
         >
           <HeroBackdrop />
-          {/* Finder-eye motif, echoing the landing page */}
-          <div
-            aria-hidden="true"
-            className="absolute -right-24 top-[calc(var(--header-h)+0.5rem)] hidden size-[340px] items-center justify-center rounded-[85px] border-[38px] border-sky/90 drop-shadow-[0_0_28px_rgba(166,225,250,0.35)] md:flex lg:right-[6%]"
-          >
-            <div
-              className="size-[136px] animate-blink rounded-[38px] bg-coral"
-              style={{ ["--blink-delay" as string]: "2.5s" }}
-            />
-          </div>
 
           <div id="main-content" className="page-container relative flex flex-col items-start gap-6">
             <div data-reveal="up">
