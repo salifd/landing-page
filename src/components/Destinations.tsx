@@ -2,9 +2,9 @@ import React from "react";
 import { ASSETS, Chip, SectionHeading } from "./brand";
 
 const TICKETS = [
-  { code: "THA", country: "Thailand", rail: "Thai QR · PromptPay", currency: "THB", photo: ASSETS.photoBkk },
-  { code: "VNM", country: "Vietnam", rail: "VietQR", currency: "VND", photo: ASSETS.photoX1 },
-  { code: "PHL", country: "Philippines", rail: "QR Ph", currency: "PHP", photo: ASSETS.photoMnl },
+  { code: "THA", country: "Thailand", rail: "Thai QR · PromptPay", currency: "THB", photo: ASSETS.ticketTha },
+  { code: "VNM", country: "Vietnam", rail: "VietQR", currency: "VND", photo: ASSETS.ticketVnm },
+  { code: "PHL", country: "Philippines", rail: "QR Ph", currency: "PHP", photo: ASSETS.ticketPhl },
 ];
 
 const StubField: React.FC<{ label: string; value: string }> = ({ label, value }) => (

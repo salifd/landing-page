@@ -11,6 +11,9 @@ export const ASSETS = {
   photoVn2: "/assets/redesign/photo-vn2.png",
   photoBkk: "/assets/redesign/photo-bkk.png",
   photoX1: "/assets/redesign/photo-x1.png",
+  ticketTha: "/assets/redesign/ticket-tha.png",
+  ticketVnm: "/assets/redesign/ticket-vnm.png",
+  ticketPhl: "/assets/redesign/ticket-phl.png",
 } as const;
 
 export const Logo: React.FC = () => (
