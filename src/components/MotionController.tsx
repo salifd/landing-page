@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Drives the page's scroll animations from plain data attributes, so the
@@ -47,6 +48,9 @@ function reveal(el: Element) {
 }
 
 export default function MotionController() {
+  // Mounted once in the root layout; re-scan after each client-side navigation
+  const pathname = usePathname();
+
   useEffect(() => {
     // The hero animates with CSS on first paint (see globals.css)
     const outsideHero = (el: Element) => !el.closest("[data-hero]");
@@ -73,7 +77,7 @@ export default function MotionController() {
     );
     targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }

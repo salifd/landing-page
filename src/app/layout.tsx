@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import MatomoPageView from "@/components/MatomoPageView";
+import MotionController from "@/components/MotionController";
 import "./globals.css";
 
 const SITE_URL = "https://www.quikkupay.com";
@@ -152,6 +153,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
         <MatomoPageView />
+        <MotionController />
       </body>
     </html>
   );

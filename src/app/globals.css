@@ -95,6 +95,52 @@
   rotate: none;
 }
 
+/* ------------------------------------------------------------------ */
+/* Legal pages                                                         */
+/* ------------------------------------------------------------------ */
+
+.legal-prose {
+  @apply text-deep-blue;
+}
+.legal-prose section + section {
+  @apply mt-14 border-t border-deep-blue/15 pt-14;
+}
+.legal-prose h2 {
+  @apply mb-5 flex items-center gap-4 font-display text-2xl font-bold leading-tight tracking-[-0.01em] md:text-[28px];
+}
+.legal-prose .legal-number {
+  @apply flex size-10 shrink-0 items-center justify-center rounded-xl bg-sky font-display text-base font-bold;
+}
+.legal-prose h3 {
+  @apply mb-3 mt-8 font-display text-lg font-semibold;
+}
+.legal-prose p,
+.legal-prose li {
+  @apply text-pretty text-[17px] leading-[1.7];
+}
+.legal-prose p + p,
+.legal-prose p + ul,
+.legal-prose ul + p {
+  @apply mt-4;
+}
+.legal-prose ul {
+  @apply flex flex-col gap-3;
+}
+.legal-prose li {
+  @apply relative pl-7;
+}
+/* Bullets drawn as small QR "modules" */
+.legal-prose li::before {
+  content: '';
+  @apply absolute left-0 top-[0.62em] size-2.5 rounded-[3px] bg-coral;
+}
+.legal-prose strong {
+  @apply font-semibold;
+}
+.legal-prose a {
+  @apply font-semibold text-deep-blue underline decoration-coral decoration-2 underline-offset-4 transition-colors duration-200 hover:text-coral;
+}
+
 /*
  * The hero animates in with CSS keyframes on first paint instead of waiting
  * for the IntersectionObserver, so a slow script never leaves it blank.

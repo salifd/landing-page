@@ -8,7 +8,6 @@ import Faq from "@/components/Faq";
 import FinalCta from "@/components/FinalCta";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-import MotionController from "@/components/MotionController";
 
 export default function Home() {
   return (
@@ -25,7 +24,6 @@ export default function Home() {
         <FinalCta />
       </main>
       <SiteFooter />
-      <MotionController />
     </div>
   );
 }

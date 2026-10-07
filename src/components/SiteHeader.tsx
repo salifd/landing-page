@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { ArrowLabel, compactButtonClass, Logo } from "./brand";
 
 const SiteHeader: React.FC = () => {
@@ -43,16 +44,17 @@ const SiteHeader: React.FC = () => {
             scrolled ? "py-3" : "py-4 md:py-7"
           }`}
         >
-          <a
-            href="#main-content"
+          <Link
+            href="/"
             aria-label="Quikku home"
             className="rounded-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-sky/60"
           >
             <Logo />
-          </a>
-          <a href="#waitlist" onClick={goToWaitlist} className={compactButtonClass}>
+          </Link>
+          {/* On the home page this scrolls to the hero form; elsewhere it navigates there */}
+          <Link href="/#waitlist" onClick={goToWaitlist} className={compactButtonClass}>
             <ArrowLabel compact>Join the waitlist</ArrowLabel>
-          </a>
+          </Link>
         </div>
       </header>
     </>
