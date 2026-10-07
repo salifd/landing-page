@@ -1,4 +1,6 @@
 import React from "react";
+import RateLockCountdown from "./RateLockCountdown";
+import { delay } from "./motion";
 
 // "Confirm payment" screen from the design, drawn on a 264px-wide artboard.
 // Every length is expressed in container query units so the phone scales
@@ -21,12 +23,19 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
   frameStyle,
   screenWidth,
 }) => (
-  <div className="absolute overflow-hidden border-solid border-midnight bg-cream" style={frameStyle}>
+  <div
+    data-reveal="rise"
+    className="absolute overflow-hidden border-solid border-midnight bg-cream shadow-[0_40px_80px_-30px_rgba(0,8,40,0.8)]"
+    style={delay(520, frameStyle)}
+  >
     <div
       className="absolute left-0 top-0 overflow-hidden bg-cream text-deep-blue [container-type:inline-size]"
       style={{ width: screenWidth, aspectRatio: "264 / 572.336" }}
     >
-      <p className="absolute font-display font-semibold leading-[normal]" style={{ left: p(16.12), top: p(10.75), fontSize: p(10.076) }}>
+      <p
+        className="absolute font-display font-semibold leading-[normal]"
+        style={{ left: p(16.12), top: p(10.75), fontSize: p(10.076) }}
+      >
         9:41
       </p>
       <div
@@ -49,7 +58,14 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
       {/* Merchant row */}
       <div
         className="absolute flex items-center bg-white"
-        style={{ left: p(16.12), top: p(110.17), width: p(231.756), padding: p(9.405), gap: p(8.061), borderRadius: p(12.092) }}
+        style={{
+          left: p(16.12),
+          top: p(110.17),
+          width: p(231.756),
+          padding: p(9.405),
+          gap: p(8.061),
+          borderRadius: p(12.092),
+        }}
       >
         <div className="shrink-0 rounded-full bg-sky" style={{ width: p(29.557), height: p(29.557) }} />
         <div className="flex min-w-0 flex-1 flex-col items-start leading-[normal]" style={{ gap: p(2.687) }}>
@@ -76,14 +92,24 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
       >
         THB 180.00
       </p>
-      <p className="absolute leading-[normal] text-stone" style={{ left: p(16.12), top: p(213.62), width: p(231.756), fontSize: p(8.733) }}>
+      <p
+        className="absolute leading-[normal] text-stone"
+        style={{ left: p(16.12), top: p(213.62), width: p(231.756), fontSize: p(8.733) }}
+      >
         The merchant receives this exact amount in baht.
       </p>
 
       {/* Cost breakdown */}
       <div
         className="absolute flex flex-col items-start bg-white"
-        style={{ left: p(16.12), top: p(239.15), width: p(231.756), padding: p(13.435), gap: p(9.405), borderRadius: p(13.435) }}
+        style={{
+          left: p(16.12),
+          top: p(239.15),
+          width: p(231.756),
+          padding: p(13.435),
+          gap: p(9.405),
+          borderRadius: p(13.435),
+        }}
       >
         <Row label="Amount in baht" value="THB 180.00" />
         <Row label="Exchange rate" value="1 EUR = 37.96 THB" />
@@ -120,7 +146,10 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
         }}
       >
         <div className="shrink-0 bg-deep-blue" style={{ width: p(26.87), height: p(17.466), borderRadius: p(3.359) }} />
-        <div className="flex min-w-0 flex-1 flex-col items-start whitespace-nowrap leading-[normal]" style={{ gap: p(1.344) }}>
+        <div
+          className="flex min-w-0 flex-1 flex-col items-start whitespace-nowrap leading-[normal]"
+          style={{ gap: p(1.344) }}
+        >
           <span className="font-semibold" style={{ fontSize: p(9.405) }}>
             Visa •••• 0612
           </span>
@@ -134,9 +163,12 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
       </div>
 
       <div className="absolute flex items-center" style={{ left: p(16.12), top: p(456.79), gap: p(5.374) }}>
-        <div className="shrink-0 rounded-full bg-coral" style={{ width: p(5.374), height: p(5.374) }} />
+        <span className="relative flex shrink-0" style={{ width: p(5.374), height: p(5.374) }}>
+          <span className="absolute inset-0 animate-ping-soft rounded-full bg-coral" />
+          <span className="relative size-full rounded-full bg-coral" />
+        </span>
         <span className="whitespace-nowrap leading-[normal] text-stone" style={{ fontSize: p(8.061) }}>
-          Rate locked for 00:58
+          Rate locked for <RateLockCountdown />
         </span>
       </div>
 
@@ -151,7 +183,10 @@ const PhoneMockup: React.FC<{ frameStyle: React.CSSProperties; screenWidth: stri
           boxShadow: `0 ${p(5.374)} ${p(13.435)} ${p(-2.687)} rgba(255,92,92,0.35)`,
         }}
       >
-        <span className="whitespace-nowrap font-display font-semibold leading-[normal] text-white" style={{ fontSize: p(11.42) }}>
+        <span
+          className="whitespace-nowrap font-display font-semibold leading-[normal] text-white"
+          style={{ fontSize: p(11.42) }}
+        >
           Pay THB 180.00
         </span>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Check } from "lucide-react";
 import { ASSETS } from "./brand";
 import PhoneMockup from "./PhoneMockup";
+import { delay } from "./motion";
 
 // The hero "QR mosaic" is laid out on a 1184 × 540 artboard. Lengths use
 // container query units so the whole composition scales as one piece.
@@ -46,18 +47,37 @@ const MODULES: [number, number, Tone][] = [
   [1104, 460, "sky"],
 ];
 
+// Pieces pop in as a ripple spreading out from the phone (centre 592, 270)
+const rippleDelay = (left: number, top: number, size: number) =>
+  680 + Math.hypot(left + size / 2 - 592, top + size / 2 - 270) * 0.9;
+
 const PAID_TAGS: [string, number, number][] = [
   ["Iced coffee · VND 25,000", 248, 144],
   ["Mango · THB 40", 776, 144],
   ["Turon · PHP 30", -20, 420],
 ];
 
-const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral" }> = ({ left, pupil }) => (
+const FinderEye: React.FC<{ left: number; pupil: "sky" | "coral"; blinkDelay: string }> = ({
+  left,
+  pupil,
+  blinkDelay,
+}) => (
   <div
+    data-reveal="pop"
     className="absolute flex items-center justify-center border-solid border-sky"
-    style={{ left: m(left), top: 0, width: m(264), height: m(264), borderWidth: m(29), borderRadius: m(66) }}
+    style={delay(rippleDelay(left, 0, 264), {
+      left: m(left),
+      top: 0,
+      width: m(264),
+      height: m(264),
+      borderWidth: m(29),
+      borderRadius: m(66),
+    })}
   >
-    <div className={pupil === "sky" ? "bg-sky" : "bg-coral"} style={{ width: m(106), height: m(106), borderRadius: m(29) }} />
+    <div
+      className={`animate-blink ${pupil === "sky" ? "bg-sky" : "bg-coral"}`}
+      style={{ width: m(106), height: m(106), borderRadius: m(29), ["--blink-delay" as string]: blinkDelay }}
+    />
   </div>
 );
 
@@ -68,6 +88,7 @@ const QrMosaic: React.FC = () => (
     className="relative left-1/2 -translate-x-1/2 [container-type:inline-size]"
     style={{ width: "min(1184px, max(680px, 100% - 40px))" }}
     role="img"
+    data-reveal-group
     aria-label="Quikku paying local QR codes: a payment confirmation for THB 180.00 surrounded by street-food purchases in Vietnam, Thailand and the Philippines"
   >
     <div className="relative w-full" style={{ aspectRatio: "1184 / 540" }} aria-hidden="true">
@@ -83,42 +104,72 @@ const QrMosaic: React.FC = () => (
         screenWidth={m(264)}
       />
 
-      <FinderEye left={0} pupil="sky" />
-      <FinderEye left={920} pupil="coral" />
+      <FinderEye left={0} pupil="sky" blinkDelay="2.2s" />
+      <FinderEye left={920} pupil="coral" blinkDelay="4.6s" />
 
       {PHOTOS.map(([src, left, top]) => (
         <img
           key={src}
           src={src}
           alt=""
+          width={172}
+          height={172}
+          data-reveal="pop"
           className="absolute max-w-none object-cover"
-          style={{ left: m(left), top: m(top), width: m(172), height: m(172), borderRadius: m(36) }}
+          style={delay(rippleDelay(left, top, 172), {
+            left: m(left),
+            top: m(top),
+            width: m(172),
+            height: m(172),
+            borderRadius: m(36),
+          })}
         />
       ))}
 
       {MODULES.map(([left, top, tone]) => (
         <div
           key={`${left}-${top}`}
+          data-reveal="pop"
           className={`absolute ${toneClass[tone]}`}
-          style={{ left: m(left), top: m(top), width: m(80), height: m(80), borderRadius: m(20) }}
+          style={delay(rippleDelay(left, top, 80), {
+            left: m(left),
+            top: m(top),
+            width: m(80),
+            height: m(80),
+            borderRadius: m(20),
+          })}
         />
       ))}
 
-      {PAID_TAGS.map(([label, left, top]) => (
+      {PAID_TAGS.map(([label, left, top], i) => (
+        // Outer element pops in; inner pill bobs (two separate animations)
         <div
           key={label}
-          className="absolute flex items-center rounded-full bg-white"
-          style={{ left: m(left), top: m(top), gap: m(8), padding: `${m(8)} ${m(14)} ${m(8)} ${m(10)}` }}
+          data-reveal="pop"
+          className="absolute"
+          style={delay(1450 + i * 200, { left: m(left), top: m(top) })}
         >
           <div
-            className="flex shrink-0 items-center justify-center rounded-full bg-deep-blue"
-            style={{ width: m(20), height: m(20) }}
+            className="flex animate-bob items-center rounded-full bg-white shadow-[0_10px_30px_-12px_rgba(0,28,85,0.6)]"
+            style={{
+              gap: m(8),
+              padding: `${m(8)} ${m(14)} ${m(8)} ${m(10)}`,
+              ["--bob-delay" as string]: `${-i * 1.7}s`,
+            }}
           >
-            <Check strokeWidth={3} className="block text-white" style={{ width: m(12), height: m(12) }} />
+            <div
+              className="flex shrink-0 items-center justify-center rounded-full bg-deep-blue"
+              style={{ width: m(20), height: m(20) }}
+            >
+              <Check strokeWidth={3} className="block text-white" style={{ width: m(12), height: m(12) }} />
+            </div>
+            <span
+              className="whitespace-nowrap font-semibold leading-[normal] text-deep-blue"
+              style={{ fontSize: m(13) }}
+            >
+              {label}
+            </span>
           </div>
-          <span className="whitespace-nowrap font-semibold leading-[normal] text-deep-blue" style={{ fontSize: m(13) }}>
-            {label}
-          </span>
         </div>
       ))}
     </div>

@@ -22,10 +22,13 @@ const Track: React.FC<{ hidden?: boolean }> = ({ hidden }) => (
 );
 
 const Ticker: React.FC = () => (
-  <section aria-label="Supported QR payment rails" className="w-full overflow-hidden bg-sun py-[22px]">
-    <div className="flex w-max animate-marquee motion-reduce:animate-none">
-      <Track />
-      <Track hidden />
+  <section aria-label="Supported QR payment rails" className="w-full bg-sun py-[22px]">
+    {/* Rails fade out at the edges; the yellow band itself stays solid */}
+    <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]">
+      <div className="flex w-max animate-marquee hover:[animation-play-state:paused] motion-reduce:animate-none">
+        <Track />
+        <Track hidden />
+      </div>
     </div>
   </section>
 );
