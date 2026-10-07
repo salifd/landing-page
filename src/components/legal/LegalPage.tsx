@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import { Eyebrow } from "../brand";
 import { delay } from "../motion";
 import SiteHeader from "../SiteHeader";
 import SiteFooter from "../SiteFooter";
@@ -38,9 +37,6 @@ const LegalPage: React.FC<Props> = ({ title, updated, current, sections }) => {
           <HeroBackdrop />
 
           <div id="main-content" className="page-container relative flex flex-col items-start gap-6">
-            <div data-reveal="up">
-              <Eyebrow tone="sky">Legal</Eyebrow>
-            </div>
             <h1
               data-reveal="up"
               style={delay(90)}

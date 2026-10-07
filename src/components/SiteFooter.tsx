@@ -16,12 +16,6 @@ const SiteFooter: React.FC = () => (
         </div>
 
         <div className="flex flex-wrap gap-12 whitespace-nowrap md:gap-24">
-          <div className="flex flex-col gap-3.5">
-            <p className={columnHeading}>Contact</p>
-            <a href="mailto:support@quikkupay.com" className={footerLink}>
-              support@quikkupay.com
-            </a>
-          </div>
           <nav aria-label="Legal" className="flex flex-col gap-3.5">
             <p className={columnHeading}>Legal</p>
             <Link href="/privacy" className={footerLink}>

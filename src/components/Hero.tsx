@@ -44,10 +44,6 @@ const Hero: React.FC = () => (
       <div data-reveal="up" style={delay(600)} className="w-full sm:w-auto">
         <WaitlistForm id="waitlist" />
       </div>
-
-      <p data-reveal="fade" style={delay(760)} className="text-[15px] leading-[normal] text-white">
-        Get early access to the beta. One email when your country opens.
-      </p>
     </div>
 
     <QrMosaic />
