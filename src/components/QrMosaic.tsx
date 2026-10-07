@@ -9,7 +9,8 @@ const m = (px: number) => `${(px / 11.84).toFixed(3)}cqw`;
 type Tone = "sky" | "white" | "coral" | "sun";
 const toneClass: Record<Tone, string> = {
   sky: "bg-sky",
-  white: "bg-white",
+  // "White" modules sit at 10% opacity in the design
+  white: "bg-white/10",
   coral: "bg-coral",
   sun: "bg-sun",
 };

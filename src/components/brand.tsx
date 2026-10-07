@@ -3,6 +3,7 @@ import React from "react";
 // Shared building blocks of the Quikku brand design system.
 
 export const ASSETS = {
+  logo: "/assets/redesign/logo-quikku-white.svg",
   arrow: "/assets/redesign/icon-arrow.svg",
   check: "/assets/redesign/icon-check.svg",
   plus: "/assets/redesign/icon-plus.svg",
@@ -19,9 +20,7 @@ export const ASSETS = {
 
 export const Logo: React.FC = () => (
   <div className="flex items-center gap-3">
-    <div className="flex size-8 shrink-0 items-center justify-center rounded-lg border-4 border-sky">
-      <div className="size-[13px] rounded bg-coral" />
-    </div>
+    <img src={ASSETS.logo} alt="" width={53} height={40} className="h-10 w-auto shrink-0" />
     <span className="font-display text-2xl font-bold leading-[normal] tracking-[-0.01em] text-white">
       Quikku
     </span>
