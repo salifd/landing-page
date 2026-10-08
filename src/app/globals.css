@@ -238,6 +238,20 @@
 .js [data-hero] [data-reveal='pop'] { animation-name: reveal-pop; animation-duration: 0.7s; animation-timing-function: var(--ease-spring); }
 .js [data-hero] [data-reveal='fade'] { animation-name: reveal-fade; animation-duration: 1.2s; }
 
+/* Yellow banner: two identical lists scroll left; moving by one list's width loops seamlessly */
+@keyframes marquee {
+  to { translate: -50% 0; }
+}
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee-track {
+  animation: marquee 45s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* Nudge an invalid form field */
 @keyframes shake {
   0%, 100% { translate: 0 0; }
@@ -274,6 +288,27 @@
   .animate-pop-in,
   .scan-beam {
     animation: none;
+  }
+  /* No scrolling: one centred, wrapping list */
+  .marquee-mask {
+    mask-image: none;
+  }
+  .marquee-track {
+    width: auto;
+    justify-content: center;
+    animation: none;
+  }
+  [data-marquee-copy] {
+    display: none;
+  }
+  .marquee-list {
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.75rem;
+  }
+  .marquee-list li:last-child [data-separator] {
+    display: none;
   }
   .js [data-paid-tag]:not([data-on]) {
     opacity: 1;
