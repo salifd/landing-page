@@ -58,7 +58,7 @@ export const STRUCTURED_DATA = [
     name: "Quikku",
     alternateName: "Quikku Pay",
     url: SITE_URL,
-    logo: `${SITE_URL}/android-chrome-512x512.png`,
+    logo: `${SITE_URL}/web-app-manifest-512x512.png`,
     description: "Pay any Southeast Asian QR code with your Visa or Mastercard. No local bank account, no cash needed.",
     foundingDate: "2025",
     sameAs: ["https://twitter.com/quikkupay", "https://www.linkedin.com/company/quikku"],
