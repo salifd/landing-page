@@ -3,11 +3,8 @@
 #   cp .env.example .env    # then fill in the Brevo settings
 #   docker compose up -d --build
 #
-# The site listens on 127.0.0.1:3000 for a reverse proxy on the same machine.
-# No reverse proxy yet? Start the bundled Caddy too (automatic HTTPS via Let's Encrypt,
-# needs ports 80/443 and DNS for the domains in Caddyfile pointing at this server):
-#
-#   docker compose --profile proxy up -d --build
+# The site listens on 127.0.0.1:3000 only; nginx on the host proxies the domain to it
+# (see deploy/nginx/quikkupay.com.conf).
 
 services:
   web:
@@ -17,22 +14,3 @@ services:
     env_file: .env
     ports:
       - "127.0.0.1:3000:3000"
-
-  caddy:
-    image: caddy:2-alpine
-    profiles: ["proxy"]
-    restart: unless-stopped
-    depends_on:
-      - web
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-
-volumes:
-  caddy_data:
-  caddy_config:

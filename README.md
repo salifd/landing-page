@@ -37,7 +37,8 @@ landing-page/
 ├── src/lib/                    # Server-only Brevo client and email templates
 ├── public/                     # Static assets
 ├── scripts/check-brevo.mjs     # Checks the Brevo setup from the server
-├── Dockerfile, docker-compose.yml, Caddyfile
+├── Dockerfile, docker-compose.yml
+├── deploy/nginx/              # nginx site config for quikkupay.com
 ├── next.config.ts              # Next.js config (standalone server, security headers)
 ├── tailwind.config.js          # Tailwind configuration with custom theme
 └── package.json                # Dependencies and scripts
@@ -159,11 +160,16 @@ docker compose up -d --build
 docker compose exec web node scripts/check-brevo.mjs --send-test
 ```
 
-The site listens on `127.0.0.1:3000`. Point your reverse proxy (nginx, Traefik, ...) at it, or start the bundled Caddy, which serves `quikkupay.com` (redirecting `www.quikkupay.com` to it) with automatic HTTPS (DNS must point at the server and ports 80/443 must be open):
+The site listens on `127.0.0.1:3000` only. nginx on the server serves `quikkupay.com` with HTTPS and proxies to it; `www.quikkupay.com` and plain HTTP redirect to `https://quikkupay.com`. DNS for both names must point at the server.
 
 ```bash
-docker compose --profile proxy up -d --build
+sudo cp deploy/nginx/quikkupay.com.conf /etc/nginx/sites-available/quikkupay.com
+sudo ln -s /etc/nginx/sites-available/quikkupay.com /etc/nginx/sites-enabled/
+sudo certbot --nginx -d quikkupay.com -d www.quikkupay.com   # certificate, renews automatically
+sudo nginx -t && sudo systemctl reload nginx
 ```
+
+On a server without a certificate yet, nginx won't load the HTTPS blocks until certbot has created the files: enable only the port-80 block first, run certbot, then add the rest.
 
 To update: `git pull && docker compose up -d --build`. The container restarts automatically and exposes a health check at `/api/health`.
 
