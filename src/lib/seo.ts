@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 /** Site-wide SEO values, shared by the root layout and every page's metadata. */
-export const SITE_URL = "https://www.quikkupay.com";
+export const SITE_URL = "https://quikkupay.com";
 export const SITE_NAME = "Quikku Pay";
 export const SITE_TITLE = "Quikku Pay — Scan any QR code. Pay instantly.";
 export const SITE_DESCRIPTION =

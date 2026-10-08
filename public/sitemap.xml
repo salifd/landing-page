@@ -6,7 +6,7 @@
 
   <!-- Home Page -->
   <url>
-    <loc>https://www.quikkupay.com/</loc>
+    <loc>https://quikkupay.com/</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- Terms of Use -->
   <url>
-    <loc>https://www.quikkupay.com/terms</loc>
+    <loc>https://quikkupay.com/terms</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -22,7 +22,7 @@
 
   <!-- Privacy Policy -->
   <url>
-    <loc>https://www.quikkupay.com/privacy</loc>
+    <loc>https://quikkupay.com/privacy</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

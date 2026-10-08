@@ -1,12 +1,12 @@
 # Used only with: docker compose --profile proxy up -d
 # Caddy fetches and renews the HTTPS certificates automatically.
 
-# The canonical site is www (see the canonical URLs in the page metadata)
-quikkupay.com {
-	redir https://www.quikkupay.com{uri} permanent
+# The canonical site is quikkupay.com (see the canonical URLs in the page metadata)
+www.quikkupay.com {
+	redir https://quikkupay.com{uri} permanent
 }
 
-www.quikkupay.com {
+quikkupay.com {
 	encode zstd gzip
 	reverse_proxy web:3000
 }

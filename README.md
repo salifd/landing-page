@@ -159,7 +159,7 @@ docker compose up -d --build
 docker compose exec web node scripts/check-brevo.mjs --send-test
 ```
 
-The site listens on `127.0.0.1:3000`. Point your reverse proxy (nginx, Traefik, ...) at it, or start the bundled Caddy, which serves `quikkupay.com` / `www.quikkupay.com` with automatic HTTPS (DNS must point at the server and ports 80/443 must be open):
+The site listens on `127.0.0.1:3000`. Point your reverse proxy (nginx, Traefik, ...) at it, or start the bundled Caddy, which serves `quikkupay.com` (redirecting `www.quikkupay.com` to it) with automatic HTTPS (DNS must point at the server and ports 80/443 must be open):
 
 ```bash
 docker compose --profile proxy up -d --build
