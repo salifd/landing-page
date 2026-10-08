@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Visa Mastercard QR",
     "Thailand payment",
     "Vietnam payment",
-    "Cambodia payment",
+    "Philippines payment",
     "travel fintech",
     "international payment",
     "Quikku",

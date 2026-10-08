@@ -76,26 +76,4 @@ export const STRUCTURED_DATA = [
     description:
       "Scan any QR code. Pay instantly. Pay any Southeast Asian QR code with your Visa or Mastercard — no local bank account, no cash needed.",
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    name: SITE_NAME,
-    description:
-      "Pay any Southeast Asian QR code with your Visa or Mastercard. No local bank account, no cash needed. Travel smarter.",
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "iOS, Android",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-    provider: {
-      "@type": "Organization",
-      name: "Quikku",
-    },
-    audience: {
-      "@type": "Audience",
-      audienceType: "International Travelers",
-    },
-  },
 ];
