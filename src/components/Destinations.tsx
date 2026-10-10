@@ -3,9 +3,30 @@ import { ASSETS, Chip, SectionHeading } from "./brand";
 import { delay } from "./motion";
 
 const TICKETS = [
-  { code: "THA", country: "Thailand", rail: "Thai QR · PromptPay", currency: "THB", photo: ASSETS.ticketTha },
-  { code: "VNM", country: "Vietnam", rail: "VietQR", currency: "VND", photo: ASSETS.ticketVnm },
-  { code: "PHL", country: "Philippines", rail: "QR Ph", currency: "PHP", photo: ASSETS.ticketPhl },
+  {
+    code: "THA",
+    country: "Thailand",
+    description: "Street food, night markets and beach bars. PromptPay QR sits wherever cash used to.",
+    rail: "Thai QR · PromptPay",
+    currency: "THB",
+    photo: ASSETS.ticketTha,
+  },
+  {
+    code: "VNM",
+    country: "Vietnam",
+    description: "Cafés, taxis and bánh mì carts from Hanoi to Ho Chi Minh City run on VietQR.",
+    rail: "VietQR",
+    currency: "VND",
+    photo: ASSETS.ticketVnm,
+  },
+  {
+    code: "PHL",
+    country: "Philippines",
+    description: "Sari-sari stores, tricycles and island resorts increasingly take QR Ph.",
+    rail: "QR Ph",
+    currency: "PHP",
+    photo: ASSETS.ticketPhl,
+  },
 ];
 
 const StubField: React.FC<{ label: string; value: string }> = ({ label, value }) => (
@@ -18,7 +39,10 @@ const StubField: React.FC<{ label: string; value: string }> = ({ label, value })
 const Destinations: React.FC = () => (
   <section className="w-full bg-cream py-16 md:py-[120px]">
     <div className="page-container flex flex-col gap-12 md:gap-16">
-      <SectionHeading eyebrow="Destinations">Three countries. One boarding pass.</SectionHeading>
+      <SectionHeading eyebrow="Where it works">
+        Land in Bangkok, Hanoi or Manila.
+        <br className="hidden md:inline" /> Pay like you live there.
+      </SectionHeading>
 
       <ul data-reveal-group className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {TICKETS.map((t, i) => (
@@ -44,10 +68,11 @@ const Destinations: React.FC = () => (
                     style={delay(i * 140 + 650)}
                     className="rotate-[5deg] whitespace-nowrap rounded-full border-2 border-coral px-3.5 py-2 text-xs font-semibold uppercase leading-[normal] tracking-[0.08em] text-coral"
                   >
-                    Launch market
+                    On the route
                   </span>
                 </div>
                 <h3 className="font-display text-2xl font-semibold leading-[1.25]">{t.country}</h3>
+                <p className="text-pretty text-base leading-[1.55]">{t.description}</p>
               </div>
 
               {/* Perforation with ticket notches */}
